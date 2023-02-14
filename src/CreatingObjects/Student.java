@@ -18,6 +18,7 @@ public class Student {
 
     /**
      * Creates 5 instances of Student and runs each of the instance methods.
+     *
      * @param args ignored command-line arguments
      */
     public static void main(String[] args) {
@@ -27,7 +28,7 @@ public class Student {
         students[2] = new Student("Patchouli Knowledge");
         students[3] = new Student("Reimu Hakurei");
         students[4] = new Student("Flandre Scarlet");
-        for (Student s :                students) {
+        for (Student s : students) {
             s.setMarks(1, 1);
             s.calcAverage();
             System.out.println(s.message());

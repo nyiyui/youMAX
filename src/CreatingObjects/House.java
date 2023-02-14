@@ -22,6 +22,7 @@ public class House {
 
     /**
      * Creates 5 instances of House and runs each of the instance methods..
+     *
      * @param args ignored command-line arguments
      */
     public static void main(String[] args) {
@@ -31,7 +32,7 @@ public class House {
         houses[2] = new House(3, "Tillplain Road", "Toronto", "Ontario", "M3H 5R2", 3, false, 2);
         houses[3] = new House(4, "Tillplain Road", "Toronto", "Ontario", "M3H 5R2", 4, false, 2);
         houses[4] = new House(5, "Tillplain Road", "Toronto", "Ontario", "M3H 5R2", 5, true, 1);
-        for (House h :                houses) {
+        for (House h : houses) {
             h.displayAddress();
         }
     }
