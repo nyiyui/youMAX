@@ -23,9 +23,9 @@ public class YouGod {
         immortal = true;
     }
 
-    public YouGod(String name, YouHeart youHeart, int height, boolean immortal) {
+    public YouGod(String name, int height, boolean immortal) {
         this.name = name;
-        this.youHeart = youHeart;
+        this.youHeart = new YouHeart();
         this.height = height;
         this.thoughts = new ArrayList<>();
         this.immortal = immortal;
