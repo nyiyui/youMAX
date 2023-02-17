@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72542fd7-537b-4680-82f2-fac5963135d7" name="Changes" comment="OOP 1-Exercises #1: Creating objects (2023-02-09)">
-      <change afterPath="$PROJECT_DIR$/src/Airplane/Airplane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CreatingObjects.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreatingObjects/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatingObjects/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreatingObjects/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatingObjects/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/YoumaxPaulNyiyuiOOP2/YouGod.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +18,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,6 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/ivyyi/OneDrive/Documents/GitHub/youmax",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
