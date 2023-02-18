@@ -37,6 +37,9 @@ public class YouHeart {
         return lonely;
     }
 
+    /**
+     * Sets loneliness. Lonely Youmax is sad.
+     */
     public void setLonely(boolean lonely) {
         this.lonely = lonely;
     }
