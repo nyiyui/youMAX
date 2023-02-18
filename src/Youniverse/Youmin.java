@@ -1,4 +1,4 @@
-package YoumaxPaulNyiyuiOOP2;
+package Youniverse;
 
 public class Youmin extends YouGod {
 }

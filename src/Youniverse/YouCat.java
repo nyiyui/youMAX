@@ -1,4 +1,4 @@
-package YoumaxPaulNyiyuiOOP2;
+package Youniverse;
 
 import java.util.Random;
 

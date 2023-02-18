@@ -1,4 +1,4 @@
-package YoumaxPaulNyiyuiOOP2;
+package Youniverse;
 
 
 public class Youkai extends Younimal{

@@ -4,7 +4,7 @@
  * Date:
  * Purpose:
  */
-package YoumaxPaulNyiyuiOOP2;
+package Youniverse;
 
 public class YouHeart {
     private int bpm;
