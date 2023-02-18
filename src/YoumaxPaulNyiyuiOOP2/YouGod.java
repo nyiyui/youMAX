@@ -6,6 +6,7 @@
  */
 package YoumaxPaulNyiyuiOOP2;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class YouGod {
@@ -14,6 +15,9 @@ public class YouGod {
     private int height;
     private ArrayList<String> thoughts;
     private boolean immortal;
+
+    protected static ArrayList<Youkai> youkais;
+    protected static ArrayList<YouPerson> people;
 
     public YouGod() {
         name = "YouGOD";
