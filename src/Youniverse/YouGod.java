@@ -18,6 +18,9 @@ public class YouGod {
     protected static ArrayList<Youkai> youkais;
     protected static ArrayList<YouPerson> people;
 
+    /**
+     * 1st constructors. Takes no parameters and sets all attributes to default values.
+     */
     public YouGod() {
         name = "YouGOD";
         youHeart = new YouHeart();
@@ -26,6 +29,12 @@ public class YouGod {
         immortal = true;
     }
 
+    /**
+     * 2nd constructor for YouGod, used when one doesn't want to use the default values
+     * @param name name of YouGod
+     * @param height how tall YouGod is in centimetres
+     * @param immortal whether or not YouGod is immortal
+     */
     public YouGod(String name, int height, boolean immortal) {
         this.name = name;
         this.youHeart = new YouHeart();
@@ -33,13 +42,31 @@ public class YouGod {
         this.thoughts = new ArrayList<>();
         this.immortal = immortal;
     }
+
+    /**
+     * if YouGod is an immortal and almighty being, she will invoke her powers if she is feeling lonely
+     */
     public void beginCreation(){
-        if(youHeart.isLonely()){
-            youHeart.setLonely(false);
-            youHeart.setEmotion("Empowered");
-            System.out.println(name+" has decided to enlighten the Youniverse!");
+        if(immortal){
+            if(youHeart.isLonely()) {
+                youHeart.setLonely(false);
+                youHeart.setEmotion("Empowered");
+                System.out.println(name + " has decided to enlighten the Youniverse!");
+            }
+            else{
+                System.out.println(name+" is not feeling lonely enough :/");
+            }
+        }
+        else {
+            System.out.println("??? "+name+" isn't that powerful?");
         }
     }
+
+    /**
+     * when YouGod thinks of something, add said thought into her lists
+     * @param thought a thought that YouGod just had
+     * @param emotion the emotion YouGod feels due to having that emotion
+     */
     public void thinkOf(String thought, String emotion){
         thoughts.add(thought);
         youHeart.setEmotion(emotion);
@@ -47,6 +74,11 @@ public class YouGod {
         System.out.println("\t--> \""+thought+"\"");
         System.out.println("Now "+name+" feels "+emotion+"!");
     }
+
+    /**
+     * if oneself is immortal, then one will simply be youported to the next Youniverse
+     * else, one's heart shall stop function and one will peacefully pass on :pensive:
+     */
     public void die(){
         if(immortal){
             System.out.println(name+" never dies! Transcending to the next Youniverse...");
@@ -56,9 +88,16 @@ public class YouGod {
             System.out.println(name+" has lived a long healthy life. :(");
         }
     }
+
+    /**
+     * all livings things can grow, so obviously YouGod should try to grow
+     * @param growth number of centimetres YouGod is growing taller by
+     */
     public void grow(int growth){
         height += growth;
         youHeart.setHp(youHeart.getHp() + growth/2.0);
+        System.out.println(name+" has grown "+growth+" centimetres!");
+        System.out.println("Current HP: "+youHeart.getHp());
     }
     public String getName() {
         return name;

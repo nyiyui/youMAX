@@ -12,6 +12,9 @@ public class YouHeart {
     private double hp;
     private String emotion;
 
+    /**
+     * constructor for YouHeart, all living creatures start with the same youheart bc equality :D
+     */
     public YouHeart() {
         bpm = 100;
         lonely = true;
@@ -19,6 +22,9 @@ public class YouHeart {
         emotion = "Melancholy";
     }
 
+    /**
+     * If one dies, YouHeart stops all functions and becomes content with the life it lived
+     */
     public void die(){
         bpm = 0;
         emotion = "Content";
