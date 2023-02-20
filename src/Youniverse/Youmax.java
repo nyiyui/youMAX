@@ -72,19 +72,33 @@ public class Youmax extends YouGod {
             System.out.println("??? "+getName()+" isn't that powerful? :>");
         }
     }
-    //TODO: javadoc comments
+
+    /**
+     * accessor method for Youmax's speed
+     * @return Youmax's speed
+     */
     public double getSpeed() {
         return speed;
     }
 
+    /**
+     * mutator method for Youmax's speed
+     * @param speed Youmax's new speed
+     */
     public void setSpeed(double speed) {
         this.speed = speed;
     }
-
+    /**
+     * accessor method for Youmax's location
+     * @return Youmax's location
+     */
     public String getLocation() {
         return location;
     }
-
+    /**
+     * mutator method for Youmax's location
+     * @param location Youmax's new location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
