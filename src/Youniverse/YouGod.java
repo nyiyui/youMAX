@@ -1,8 +1,8 @@
 /**
  * Names: Youmin Lee, Ivy Zhuang, Ken Shibata
  * Teacher: Ms. Krasteva
- * Date:
- * Purpose:
+ * Date: Feb 19, 2023
+ * Purpose: YouGod Class, the originator of all living things in the Youniverse.
  */
 package Youniverse;
 
@@ -99,6 +99,7 @@ public class YouGod {
         System.out.println(name+" has grown "+growth+" centimetres!");
         System.out.println("Current HP: "+youHeart.getHp());
     }
+    //TODO: javadoc comments for getters and setters
     public String getName() {
         return name;
     }

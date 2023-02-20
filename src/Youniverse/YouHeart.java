@@ -1,8 +1,8 @@
 /**
  * Names: Youmin Lee, Ivy Zhuang, Ken Shibata
  * Teacher: Ms. Krasteva
- * Date:
- * Purpose:
+ * Date: Feb 19, 2023
+ * Purpose: Youheart class, all living things have a heart, no?
  */
 package Youniverse;
 
@@ -31,6 +31,7 @@ public class YouHeart {
         lonely = true;
         hp = 0;
     }
+    //TODO: javadoc comments for getters and setters
     public int getBpm() {
         return bpm;
     }

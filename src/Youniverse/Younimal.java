@@ -7,6 +7,7 @@
 package Youniverse;
 
 public class Younimal extends Youmax {
+    //TODO: javadoc comments, more methods
     /**
      * hungry = whether or not this Younimal is hungry
      * weight = how heavy Younimal is in pounds
@@ -26,5 +27,23 @@ public class Younimal extends Youmax {
         super(name, height, immortal, speed);
         hungry = true;
         weight = height * 2.5;
+    }
+    public void eat(Youlant food){
+
+    }
+    public boolean isHungry() {
+        return hungry;
+    }
+
+    public void setHungry(boolean hungry) {
+        this.hungry = hungry;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }

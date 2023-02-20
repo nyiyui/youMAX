@@ -3,7 +3,7 @@ package Youniverse;
 
 public class Youkai extends Younimal{
     Youkai() {
-        super();
+        super(); //TODO: fix constructor here
         youkais.add(this);
     }
 

@@ -12,7 +12,7 @@ public class YouCat extends Younimal {
     private final String name;
 
     YouCat() {
-        super();
+        super(); //TODO: fix constructor here
         name = NAMES[new Random().nextInt(NAMES.length)];
     }
 

@@ -72,7 +72,7 @@ public class Youmax extends YouGod {
             System.out.println("??? "+getName()+" isn't that powerful? :>");
         }
     }
-
+    //TODO: javadoc comments
     public double getSpeed() {
         return speed;
     }
