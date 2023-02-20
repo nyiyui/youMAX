@@ -28,6 +28,11 @@ public class Younimal extends Youmax {
         hungry = true;
         weight = height * 2.5;
     }
+
+    /**
+     *
+     * @param food for some mysterious reason, everyone on YouEarth are vegeterians meaning we only eat Youlants :>
+     */
     public void eat(Youlant food){
 
     }
