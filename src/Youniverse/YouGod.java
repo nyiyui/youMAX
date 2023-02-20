@@ -90,7 +90,7 @@ public class YouGod {
     }
 
     /**
-     * all livings things can grow, so obviously YouGod should try to grow
+     * all livings things can grow, so obviously YouGod should try to grow, too.
      * @param growth number of centimetres YouGod is growing taller by
      */
     public void grow(int growth){
