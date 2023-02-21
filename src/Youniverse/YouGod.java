@@ -23,9 +23,11 @@ public class YouGod {
     private boolean immortal;
 
     /**
-     * 1st constructors. Takes no parameters and sets all attributes to default values.
+     * 1st constructor, only for the actual YouGOD!
+     *
+     * Package-private so other people don't make fake YouGODs.
      */
-    public YouGod() {
+    YouGod() {
         name = "YouGOD";
         youHeart = new YouHeart();
         height = 100;
@@ -192,5 +194,21 @@ public class YouGod {
      */
     public void setImmortal(boolean immortal) {
         this.immortal = immortal;
+    }
+
+    /**
+     * Say something on the console.
+     * @param message message to say
+     */
+    protected void say(String message) {
+        System.out.printf("%s> %s",name, message);
+    }
+    /**
+     * Say a formatted string using the specified format string and arguments on the console.
+     * @param format format specifier for message
+     * @param args arguments referenced by the format.
+     */
+    protected void sayf(String format, Object... args) {
+        System.out.printf("%s> %s", name, String.format(format, args));
     }
 }
