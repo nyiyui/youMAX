@@ -9,14 +9,20 @@ public class YouCat extends Younimal {
             "ビクター",
             "仁ちゃん",
     };
-    private final String name;
 
+    /**
+     * Makes a new YouCat with a randomly-chosen name.
+     */
     YouCat() {
-        super(); //TODO: fix constructor here
-        name = NAMES[new Random().nextInt(NAMES.length)];
+        super(NAMES[new Random().nextInt(NAMES.length)], 40, false, 2);
     }
 
     void meow() {
-        System.out.printf("%s> にゃお！", name);
+        say("にゃお！ (meow)");
+    }
+
+    void charm(YouPerson target){
+        sayf("にゃ〜んｽﾘｽﾘキュル (charms %s)", target.getName());
+        target.charmedBy(this);
     }
 }

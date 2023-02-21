@@ -10,10 +10,26 @@ import java.util.ArrayList;
 
 public class YoukaiWatch extends YouGod{
     //TODO: constructor, methods, attributes, comments
-    private ArrayList<Youkai> youkais;
-    public void call() {
-        for (Youkai y : youkais) {
-            y.helpThePeople();
-        }
+    /**
+     * Lists all youkais created.
+     */
+    private static ArrayList<YoukaiWatch> watches = new ArrayList<>();
+    private Youkai pair;
+
+    /**
+     * Creates a new YoukaiWathch
+     * @param pair Paired Youkai. Whenever the watch is activated, this Youkai is called.
+     */
+    YoukaiWatch(Youkai pair) {
+        super(String.format("Watch %d", watches.size()), 2, true); // all YoukaiWatches are immortal as youkais ArrayList is only appended to.
+        watches.add(this);
+        this.pair = pair;
+    }
+
+    /**
+     * Activates the watch, helping all the people.
+     */
+    public void activate() {
+        pair.helpThePeople();
     }
 }

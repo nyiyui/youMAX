@@ -6,22 +6,28 @@
  */
 package Youniverse;
 
+import java.util.ArrayList;
+
 public class Younimal extends Youmax {
     //TODO: javadoc comments, more methods
     /**
-     * hungry = whether or not this Younimal is hungry
-     * weight = how heavy Younimal is in pounds
+     * whether this Younimal is hungry
      */
     private boolean hungry;
+    /**
+     * How heavy Younimal is (lb)
+     */
     private double weight;
+    protected static ArrayList<YouPerson> people = new ArrayList<>();
 
     /**
      * constructor for Younimal, uses Youmax superconstructor
      * automatically sets hungry to true and weight is calculated relative to height.
-     * @param name Younimals need names, or we won't be able to tell them apart.
-     * @param height how tall this Younimal is
+     *
+     * @param name     Younimals need names, or we won't be able to tell them apart.
+     * @param height   how tall this Younimal is (cm)
      * @param immortal some Younimals can live forever, some can't :')
-     * @param speed how fast this Younimal is. (in metres per second)
+     * @param speed    how fast this Younimal is. (m/s)
      */
     public Younimal(String name, int height, boolean immortal, double speed) {
         super(name, height, immortal, speed);
@@ -50,5 +56,14 @@ public class Younimal extends Youmax {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    /**
+     * Call when Younimal is charmed by another Younimal.
+     *
+     * @param charmedBy charmed by this Younimal.
+     */
+    protected void charmedBy(Younimal charmedBy) {
+        sayf("%sに胸キュン！ (charmed by %s)\n", charmedBy.getName(), charmedBy.getName());
     }
 }
