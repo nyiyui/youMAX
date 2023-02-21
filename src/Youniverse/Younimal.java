@@ -36,11 +36,24 @@ public class Younimal extends Youmax {
     }
 
     /**
-     *
+     * Younimals need to eat to survive, but won't eat if they aren't hungry or the food is unhealthy
+     * if they eat the food, they will gain weight and HP :D
      * @param food for some mysterious reason, everyone on YouEarth are vegeterians meaning we only eat Youlants :>
      */
     public void eat(Youlant food){
-
+        if (!hungry){
+            System.out.println(getName()+" isn't hungry smh.");
+        }
+        else if(food.getNutrients() < 0){
+            System.out.println(getName()+" won't eat this unhealthy youlant. >:(");
+        }
+        else{
+            hungry = false;
+            weight += food.getNutrients() / 2.0;
+            getYouHeart().setHp(getYouHeart().getHp() + food.getNutrients());
+            System.out.println(getName()+" has eaten a(n) "+food.getName()+"!");
+            System.out.println("It had a nutritional value of "+food.getNutrients()+" and now "+getName()+" has "+getYouHeart().getHp()+" HP.");
+        }
     }
     public boolean isHungry() {
         return hungry;
