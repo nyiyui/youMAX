@@ -21,6 +21,7 @@ public class YouGod {
     private int height;
     private ArrayList<String> thoughts;
     private boolean immortal;
+    private boolean transcended;
 
     /**
      * 1st constructor, only for the actual YouGOD!
@@ -58,12 +59,12 @@ public class YouGod {
             if (youHeart.isLonely()) {
                 youHeart.setLonely(false);
                 youHeart.setEmotion("Empowered");
-                System.out.println(name + " has decided to enlighten the Youniverse!");
+                showf("%s has decided to enlighten the Youniverse!", name);
             } else {
-                System.out.println(name + " is not feeling lonely enough :/");
+                showf("%s is not feeling lonely enough :/", name);
             }
         } else {
-            System.out.println("??? " + name + " isn't that powerful?");
+            System.out.println("???> " + name + " isn't that powerful?");
         }
     }
 
@@ -201,14 +202,43 @@ public class YouGod {
      * @param message message to say
      */
     protected void say(String message) {
-        System.out.printf("%s> %s",name, message);
+        System.out.printf("%s> %s", name, message);
     }
+
     /**
      * Say a formatted string using the specified format string and arguments on the console.
+     *
      * @param format format specifier for message
-     * @param args arguments referenced by the format.
+     * @param args   arguments referenced by the format.
      */
     protected void sayf(String format, Object... args) {
         System.out.printf("%s> %s", name, String.format(format, args));
+    }
+
+    /**
+     * Say something on the console as the voice from heaven.
+     *
+     * @param message message to say
+     */
+    protected void show(String message) {
+        System.out.printf("%s> %s", name, message);
+    }
+
+    /**
+     * Say a formatted string using the specified format string and arguments on the console as the voice from heaven.
+     *
+     * @param format format specifier for message
+     * @param args   arguments referenced by the format.
+     */
+    protected void showf(String format, Object... args) {
+        System.out.printf("%s> %s", name, String.format(format, args));
+    }
+
+    /**
+     * Makes the YouGod transcend into the next Youniverse.
+     */
+    public void transcend() {
+        show("YouGod has transcended into the next Youniverse!");
+        transcended = true;
     }
 }

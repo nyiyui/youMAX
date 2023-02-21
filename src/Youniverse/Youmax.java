@@ -102,4 +102,8 @@ public class Youmax extends YouGod {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public void makeYounimals() {
+        // TODO: impl
+    }
 }

@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f75d7a25-11c2-41f5-8317-308d4d8d4670" name="Changes" comment="OOP 2 - Airplane (2023-02-14)">
+    <list default="true" id="f75d7a25-11c2-41f5-8317-308d4d8d4670" name="Changes" comment="feeding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youmin.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/YouCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YouCat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Youniverse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Youniverse/YouGod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YouGod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/YouPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YouPerson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youkai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youkai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/YoukaiWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YoukaiWatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Younimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Younimal.java" afterDir="false" />
->>>>>>> 24e369c544b246372aff99e52a020b001e87e082
+      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youmin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +44,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Airplane">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Airplane" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Airplane.Airplane" />
       <module name="untitled" />
@@ -86,6 +79,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Youniverse.Main" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Youniverse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Strings" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="StringsAssignment" />
       <module name="untitled" />
@@ -96,12 +102,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.Strings" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Airplane" />
       <item itemvalue="Application.Children" />
       <item itemvalue="Application.CreatingObjects" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Airplane" />
         <item itemvalue="Application.CreatingObjects" />
         <item itemvalue="Application.Children" />
@@ -138,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676918881158</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="various">
+      <created>1676956094743</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676956094743</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feeding">
+      <created>1676956249021</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676956249021</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,7 +179,9 @@
     <MESSAGE value="init (2023-02-07)" />
     <MESSAGE value="OOP 1-Exercises #1: Creating objects (2023-02-09)" />
     <MESSAGE value="added a shit ton of TODO, so we know what to do ;)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a shit ton of TODO, so we know what to do ;)" />
+    <MESSAGE value="various" />
+    <MESSAGE value="feeding" />
+    <option name="LAST_COMMIT_MESSAGE" value="feeding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
