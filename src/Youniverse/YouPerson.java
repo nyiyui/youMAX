@@ -9,4 +9,10 @@ public class YouPerson extends Younimal {
         this.language = language;
         people.add(this);
     }
+    public void attemptFeeding(Younimal target){
+        if (target.isHungry())
+          sayf("I gave some food to %s!", target.getName());
+        else
+            sayf("I tried to give some food to %s, but they don't like me...",target.getName());
+    }
 }

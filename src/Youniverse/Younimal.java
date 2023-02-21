@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class Younimal extends Youmax {
     //TODO: javadoc comments, more methods
     /**
-     * whether or not this Younimal is hungry
+     * whether this Younimal is hungry
      */
     private boolean hungry;
     /**
-     * how heavy Younimal is in pounds
+     * How heavy Younimal is (lb)
      */
     private double weight;
     protected static ArrayList<YouPerson> people = new ArrayList<>();
