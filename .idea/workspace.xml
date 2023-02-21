@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f75d7a25-11c2-41f5-8317-308d4d8d4670" name="Changes" comment="feeding">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/YouGod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YouGod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youmin.java" afterDir="false" />
-    </list>
+    <list default="true" id="f75d7a25-11c2-41f5-8317-308d4d8d4670" name="Changes" comment="barebones story" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676956249021</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="barebones story">
+      <created>1676956925717</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676956925717</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,7 +183,8 @@
     <MESSAGE value="added a shit ton of TODO, so we know what to do ;)" />
     <MESSAGE value="various" />
     <MESSAGE value="feeding" />
-    <option name="LAST_COMMIT_MESSAGE" value="feeding" />
+    <MESSAGE value="barebones story" />
+    <option name="LAST_COMMIT_MESSAGE" value="barebones story" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
