@@ -6,6 +6,12 @@
  */
 package Youniverse;
 
+/**
+ * bpm = YouHeart's heartbeats per minute
+ * lonely = whether or not YouHeart feels lonely
+ * hp = how much health YouHeart has
+ * emotion = what YouHeart is feeling like
+ */
 public class YouHeart {
     private int bpm;
     private boolean lonely;
@@ -32,14 +38,27 @@ public class YouHeart {
         hp = 0;
     }
     //TODO: javadoc comments for getters and setters
+
+    /**
+     * Gets/retrieves YouHeart's bpm
+     * @return bpm
+     */
     public int getBpm() {
         return bpm;
     }
 
+    /**
+     * Sets YouHeart's bpm to a different int
+     * @param bpm
+     */
     public void setBpm(int bpm) {
         this.bpm = bpm;
     }
 
+    /**
+     * Checks if YouHeart is feeling lonely with boolean
+     * @return lonely
+     */
     public boolean isLonely() {
         return lonely;
     }
@@ -51,6 +70,10 @@ public class YouHeart {
         this.lonely = lonely;
     }
 
+    /**
+     * 
+     * @return
+     */
     public double getHp() {
         return hp;
     }
@@ -63,6 +86,10 @@ public class YouHeart {
         return emotion;
     }
 
+    /**
+     *
+     * @param emotion
+     */
     public void setEmotion(String emotion) {
         this.emotion = emotion;
     }
