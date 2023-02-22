@@ -15,6 +15,7 @@ public class YouGod {
      * height = how tall YouGod is in centimetres.
      * thoughts = an arraylist containing every thought YouGod has thought
      * immortal = whether or not YouGod has an eternal life
+     * transcended = has yougod transcended yet?
      */
     private String name;
     private YouHeart youHeart;
@@ -34,6 +35,7 @@ public class YouGod {
         height = 100;
         thoughts = new ArrayList<>();
         immortal = true;
+        transcended = false;
     }
 
     /**
@@ -49,13 +51,14 @@ public class YouGod {
         this.height = height;
         this.thoughts = new ArrayList<>();
         this.immortal = immortal;
+        this.transcended = false;
     }
 
     /**
      * if YouGod is an immortal and almighty being, she will invoke her powers if she is feeling lonely
      */
     public void beginCreation() {
-        if (immortal) {
+        if (immortal || !transcended) {
             if (youHeart.isLonely()) {
                 youHeart.setLonely(false);
                 youHeart.setEmotion("Empowered");
@@ -237,11 +240,4 @@ public class YouGod {
         System.out.println();
     }
 
-    /**
-     * Makes the YouGod transcend into the next Youniverse.
-     */
-    public void transcend() {
-        show("YouGod has transcended into the next Youniverse!");
-        transcended = true;
-    }
 }
