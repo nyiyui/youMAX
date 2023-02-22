@@ -12,8 +12,8 @@ public class Main {
         youGod.beginCreation();
         Youmax max = new Youmax(1000);
         Youmin min = new Youmin();
-        max.makeYounimals();
-        min.makeYoulants();
+//        max.makeYounimals();
+//        min.makeYoulants();
         youGod.thinkOf("There are so many new YouCreations surrounding me!","comforted");
         youGod.transcend();
     }
