@@ -6,12 +6,6 @@
  */
 package Youniverse;
 
-/**
- * bpm = YouHeart's heartbeats per minute
- * lonely = whether or not YouHeart feels lonely
- * hp = how much health YouHeart has
- * emotion = what YouHeart is feeling like
- */
 public class YouHeart {
     /**
      * bpm = beats per minute that youheart beats
@@ -43,47 +37,29 @@ public class YouHeart {
         lonely = true;
         hp = 0;
     }
-<<<<<<< HEAD
-    //TODO: javadoc comments for getters and setters
-
-    /**
-     * Gets/retrieves YouHeart's bpm
-     * @return bpm
-=======
 
     /**
      * accessor method for beats per minute
      *
      * @return YouHeart's bpm
->>>>>>> 3fb40de2a3f1f42ebb33e77f8b47882b091bf9b1
      */
     public int getBpm() {
         return bpm;
     }
 
     /**
-<<<<<<< HEAD
-     * Sets YouHeart's bpm to a different int
-     * @param bpm
-=======
      * mutator method for BPM
      *
      * @param bpm new value of Youheart's bpm
->>>>>>> 3fb40de2a3f1f42ebb33e77f8b47882b091bf9b1
      */
     public void setBpm(int bpm) {
         this.bpm = bpm;
     }
 
     /**
-<<<<<<< HEAD
-     * Checks if YouHeart is feeling lonely with boolean
-     * @return lonely
-=======
      * accessor method for YouHeart's loneliness
      *
-     * @return whether or not Youheart is feeling lonely
->>>>>>> 3fb40de2a3f1f42ebb33e77f8b47882b091bf9b1
+     * @return whether or no Youheart is feeling lonely
      */
     public boolean isLonely() {
         return lonely;
@@ -99,14 +75,9 @@ public class YouHeart {
     }
 
     /**
-<<<<<<< HEAD
-     * 
-     * @return
-=======
      * accessor method for youheart's HP
      *
      * @return how much HP youheart has
->>>>>>> 3fb40de2a3f1f42ebb33e77f8b47882b091bf9b1
      */
     public double getHp() {
         return hp;
@@ -131,14 +102,9 @@ public class YouHeart {
     }
 
     /**
-<<<<<<< HEAD
-     *
-     * @param emotion
-=======
      * mutator method for youheart's emotion. The more complicated (longer) the emotion, the higher the heart rate rises to.
      *
      * @param emotion youhearts don't feel the same emotion all the time, so this is the new emotion youheart will feel
->>>>>>> 3fb40de2a3f1f42ebb33e77f8b47882b091bf9b1
      */
     public void setEmotion(String emotion) {
         this.emotion = emotion;

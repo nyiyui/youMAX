@@ -19,7 +19,7 @@ public class YoukaiWatch extends YouGod{
     private Youkai pair;
 
     /**
-     * Creates a new YoukaiWatch
+     * Creates a new YoukaiWathch
      * @param pair Paired Youkai. Whenever the watch is activated, this Youkai is called.
      */
     YoukaiWatch(Youkai pair) {
