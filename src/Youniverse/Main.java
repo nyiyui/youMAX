@@ -9,11 +9,12 @@ package Youniverse;
 public class Main {
     public static void main(String[] args) {
         YouGod youGod = new YouGod();
+        youGod.thinkOf("this is a world (is it even?) filled with nothingness.", "lonely and sad");
         youGod.beginCreation();
         Youmax max = new Youmax(1000);
         Youmin min = new Youmin();
-//        max.makeYounimals();
-//        min.makeYoulants();
+        max.beginCreation();
+        min.beginCreation();
         youGod.thinkOf("There are so many new YouCreations surrounding me!","comforted");
         youGod.transcend();
     }

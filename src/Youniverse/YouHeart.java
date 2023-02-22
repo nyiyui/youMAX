@@ -95,10 +95,11 @@ public class YouHeart {
     }
 
     /**
-     * mutator method for youheart's emotion
+     * mutator method for youheart's emotion. The more complicated (longer) the emotion, the higher the heart rate rises to.
      * @param emotion youhearts don't feel the same emotion all the time, so this is the new emotion youheart will feel
      */
     public void setEmotion(String emotion) {
         this.emotion = emotion;
+        setBpm(getBpm()+emotion.length()/2);
     }
 }

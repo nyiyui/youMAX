@@ -32,7 +32,7 @@ public class YouGod {
         name = "YouGOD";
         youHeart = new YouHeart();
         height = 100;
-        thoughts = new ArrayList<String>();
+        thoughts = new ArrayList<>();
         immortal = true;
     }
 
@@ -80,6 +80,7 @@ public class YouGod {
         System.out.println(name + " just thought of something!");
         System.out.println("\t--> \"" + thought + "\"");
         System.out.println("Now " + name + " feels " + emotion + "!");
+        showf("%s's heart rate is now: %s bpm", name,youHeart.getBpm());
     }
 
     /**
