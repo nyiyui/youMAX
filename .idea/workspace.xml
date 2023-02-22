@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72542fd7-537b-4680-82f2-fac5963135d7" name="Changes" comment="add moar stuff :)">
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/YoukaiWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/YoukaiWatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youmax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youmax.java" afterDir="false" />
+    <list default="true" id="72542fd7-537b-4680-82f2-fac5963135d7" name="Changes" comment="do some todos">
+      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youkai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youkai.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677041375999</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="do some todos">
+      <created>1677041730954</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677041730954</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,7 +218,8 @@
     <MESSAGE value="feeding" />
     <MESSAGE value="barebones story" />
     <MESSAGE value="add moar stuff :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="add moar stuff :)" />
+    <MESSAGE value="do some todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="do some todos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
