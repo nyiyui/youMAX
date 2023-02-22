@@ -232,6 +232,7 @@ public class YouGod {
      */
     protected void showf(String format, Object... args) {
         System.out.printf("%s> %s", name, String.format(format, args));
+        System.out.println();
     }
 
     /**
