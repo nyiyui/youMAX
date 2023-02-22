@@ -9,11 +9,13 @@ package Youniverse;
 import java.util.ArrayList;
 
 public class YoukaiWatch extends YouGod{
-    //TODO: constructor, methods, attributes, comments
     /**
      * Lists all youkais created.
      */
     private static ArrayList<YoukaiWatch> watches = new ArrayList<>();
+    /**
+     * All YoukaiWatches are paired with Youkais. This is this watch's pair.
+     */
     private Youkai pair;
 
     /**
