@@ -31,7 +31,7 @@ public class YouHeart {
     /**
      * If one dies, YouHeart stops all functions and becomes content with the life it lived
      */
-    public void die(){
+    public void die() {
         bpm = 0;
         emotion = "Content";
         lonely = true;
@@ -40,6 +40,7 @@ public class YouHeart {
 
     /**
      * accessor method for beats per minute
+     *
      * @return YouHeart's bpm
      */
     public int getBpm() {
@@ -48,6 +49,7 @@ public class YouHeart {
 
     /**
      * mutator method for BPM
+     *
      * @param bpm new value of Youheart's bpm
      */
     public void setBpm(int bpm) {
@@ -56,6 +58,7 @@ public class YouHeart {
 
     /**
      * accessor method for YouHeart's loneliness
+     *
      * @return whether or no Youheart is feeling lonely
      */
     public boolean isLonely() {
@@ -64,6 +67,7 @@ public class YouHeart {
 
     /**
      * Sets loneliness. Lonely Youmax is sad.
+     *
      * @param lonely the state of youheart's loneliness
      */
     public void setLonely(boolean lonely) {
@@ -72,6 +76,7 @@ public class YouHeart {
 
     /**
      * accessor method for youheart's HP
+     *
      * @return how much HP youheart has
      */
     public double getHp() {
@@ -80,6 +85,7 @@ public class YouHeart {
 
     /**
      * mutator method for youheart's hp
+     *
      * @param hp new value of youheart's hp
      */
     public void setHp(double hp) {
@@ -88,6 +94,7 @@ public class YouHeart {
 
     /**
      * accessor method for youheart's emotion
+     *
      * @return what emotion youheart is feeling
      */
     public String getEmotion() {
@@ -96,10 +103,11 @@ public class YouHeart {
 
     /**
      * mutator method for youheart's emotion. The more complicated (longer) the emotion, the higher the heart rate rises to.
+     *
      * @param emotion youhearts don't feel the same emotion all the time, so this is the new emotion youheart will feel
      */
     public void setEmotion(String emotion) {
         this.emotion = emotion;
-        setBpm(getBpm()+emotion.length()/2);
+        setBpm(getBpm() + emotion.length() / 2);
     }
 }
