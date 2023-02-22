@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72542fd7-537b-4680-82f2-fac5963135d7" name="Changes" comment="do some todos">
-      <change beforePath="$PROJECT_DIR$/src/Youniverse/Youkai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youniverse/Youkai.java" afterDir="false" />
-    </list>
+    <list default="true" id="72542fd7-537b-4680-82f2-fac5963135d7" name="Changes" comment="yeet more todos" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677041730954</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="yeet more todos">
+      <created>1677041951858</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1677041951858</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +224,8 @@
     <MESSAGE value="barebones story" />
     <MESSAGE value="add moar stuff :)" />
     <MESSAGE value="do some todos" />
-    <option name="LAST_COMMIT_MESSAGE" value="do some todos" />
+    <MESSAGE value="yeet more todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="yeet more todos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

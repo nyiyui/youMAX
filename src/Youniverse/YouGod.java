@@ -25,7 +25,7 @@ public class YouGod {
 
     /**
      * 1st constructor, only for the actual YouGOD!
-     *
+     * <p>
      * Package-private so other people don't make fake YouGODs.
      */
     YouGod() {
@@ -80,7 +80,7 @@ public class YouGod {
         System.out.println(name + " just thought of something!");
         System.out.println("\t--> \"" + thought + "\"");
         System.out.println("Now " + name + " feels " + emotion + "!");
-        showf("%s's heart rate is now: %s bpm", name,youHeart.getBpm());
+        showf("%s's heart rate is now: %s bpm", name, youHeart.getBpm());
     }
 
     /**
@@ -200,6 +200,7 @@ public class YouGod {
 
     /**
      * Say something on the console.
+     *
      * @param message message to say
      */
     protected void say(String message) {
