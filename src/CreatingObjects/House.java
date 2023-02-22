@@ -16,8 +16,11 @@ public class House {
     private String city;
     private String province;
     private String postal_code;
+    @SuppressWarnings("unused")
     private double size;
+    @SuppressWarnings("unused")
     private boolean detached;
+    @SuppressWarnings("unused")
     private int stories;
 
     /**

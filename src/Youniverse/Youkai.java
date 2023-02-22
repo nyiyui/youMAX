@@ -9,7 +9,9 @@ package Youniverse;
 import java.util.ArrayList;
 
 public class Youkai extends Younimal {
-    //TODO: add more attributes and methods, javadoc comments, etc.
+    /**
+     * List of all Youkais. As this is only appended to, all Youkais are immortal to the GC.
+     */
     private static ArrayList<Youkai> youkais = new ArrayList<>();
 
     /**
@@ -24,13 +26,20 @@ public class Youkai extends Younimal {
         youkais.add(this);
     }
 
-    void helpThePeople() {
+    /**
+     * Helps all YouPersons.
+     */
+    public void helpThePeople() {
         for (YouPerson p : people) {
             help(p);
         }
     }
 
-    void help(YouPerson p) {
-        throw new RuntimeException("not implemented");
+    /**
+     * Helps the specified YouPerson.
+     * @param target The YouPerson to help.
+     */
+    public void help(YouPerson target) {
+        target.thinkOf(String.format("Oh! %s came to help me!", getName()), "so happy I can't believe it");
     }
 }

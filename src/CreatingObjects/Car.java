@@ -10,6 +10,7 @@
  */
 package CreatingObjects;
 
+@SuppressWarnings("ALL")
 public class Car {
     private String brand;
     private String model;

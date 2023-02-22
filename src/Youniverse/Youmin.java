@@ -97,6 +97,9 @@ public class Youmin extends YouGod {
         else{
             System.out.println("??? "+getName()+" isn't that powerful? :>");
         }
+        Youkai reimu = new Youkai("霊夢 (Reimu)", 160, 300);
+        YoukaiWatch reimuWatch = new YoukaiWatch(reimu);
+        reimuWatch.activate();
     }
 
     /**

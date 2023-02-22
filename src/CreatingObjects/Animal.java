@@ -10,6 +10,7 @@
  */
 package CreatingObjects;
 
+@SuppressWarnings("unused")
 public class Animal {
     private String name;
     private boolean tired;

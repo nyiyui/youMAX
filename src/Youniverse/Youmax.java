@@ -71,6 +71,10 @@ public class Youmax extends YouGod {
         else{
             System.out.println("??? "+getName()+" isn't that powerful? :>");
         }
+
+        YouPerson youmu = new YouPerson("妖夢 (Youmu)", 123, true, 5, "日本語？ (???)");
+        YouCat cat = new YouCat();
+        cat.charm(youmu);
     }
 
     /**
@@ -101,9 +105,5 @@ public class Youmax extends YouGod {
      */
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public void makeYounimals() {
-        // TODO: impl
     }
 }
