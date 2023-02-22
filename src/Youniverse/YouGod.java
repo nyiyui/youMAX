@@ -208,6 +208,7 @@ public class YouGod {
      */
     protected void say(String message) {
         System.out.printf("%s> %s", name, message);
+        System.out.println();
     }
 
     /**
