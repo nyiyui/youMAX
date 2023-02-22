@@ -9,7 +9,6 @@ package Youniverse;
 import java.util.ArrayList;
 
 public class Younimal extends Youmax {
-    //TODO: javadoc comments, more methods
     /**
      * whether this Younimal is hungry
      */
@@ -18,6 +17,9 @@ public class Younimal extends Youmax {
      * How heavy Younimal is (lb)
      */
     private double weight;
+    /**
+     * the people Younimal can interact with
+     */
     protected static ArrayList<YouPerson> people = new ArrayList<>();
 
     /**
@@ -38,35 +40,55 @@ public class Younimal extends Youmax {
     /**
      * Younimals need to eat to survive, but won't eat if they aren't hungry or the food is unhealthy
      * if they eat the food, they will gain weight and HP :D
+     *
      * @param food for some mysterious reason, everyone on YouEarth are vegeterians meaning we only eat Youlants :>
      */
-    public void eat(Youlant food){
-        if (!hungry){
-            System.out.println(getName()+" isn't hungry smh.");
-        }
-        else if(food.getNutrients() < 0){
-            System.out.println(getName()+" won't eat this unhealthy youlant. >:(");
-        }
-        else{
+    public void eat(Youlant food) {
+        if (!hungry) {
+            System.out.println(getName() + " isn't hungry smh.");
+        } else if (food.getNutrients() < 0) {
+            System.out.println(getName() + " won't eat this unhealthy youlant. >:(");
+        } else {
             hungry = false;
             weight += food.getNutrients() / 2.0;
             getYouHeart().setHp(getYouHeart().getHp() + food.getNutrients());
-            System.out.println(getName()+" has eaten a(n) "+food.getName()+"!");
-            System.out.println("It had a nutritional value of "+food.getNutrients()+" and now "+getName()+" has "+getYouHeart().getHp()+" HP.");
+            System.out.println(getName() + " has eaten a(n) " + food.getName() + "!");
+            System.out.println("It had a nutritional value of " + food.getNutrients() + " and now " + getName() + " has " + getYouHeart().getHp() + " HP.");
         }
     }
+
+    /**
+     * accessor method for younimal's hunger
+     *
+     * @return whether or not younimal is hungry
+     */
     public boolean isHungry() {
         return hungry;
     }
 
+    /**
+     * mutator method for how hungry younimal is
+     *
+     * @param hungry how hungry younimal is
+     */
     public void setHungry(boolean hungry) {
         this.hungry = hungry;
     }
 
+    /**
+     * accessor method for younimal's weight
+     *
+     * @return how much younimal weighs
+     */
     public double getWeight() {
         return weight;
     }
 
+    /**
+     * mutator method for younimal's weight
+     *
+     * @param weight younimal's new weight
+     */
     public void setWeight(double weight) {
         this.weight = weight;
     }
