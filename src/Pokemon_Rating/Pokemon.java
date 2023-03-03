@@ -20,6 +20,19 @@ class Pokemon {
      */
     int aesthetic;
 
+    Pokemon() {
+    }
+
+    Pokemon(String name, int attack, int defense, int hp, int speed, int aesthetic) {
+        this.name = name;
+        this.attack = attack;
+        this.defense = defense;
+        this.hp = hp;
+        this.speed = speed;
+        this.aesthetic = aesthetic;
+    }
+
+
     /**
      * Names of csv file headers.
      */
@@ -42,16 +55,18 @@ class Pokemon {
     }
 
     public static void main(String[] args) throws ParseException, IOException {
-        final FileReader source = new FileReader("./test.csv");
-        final BufferedReader r = new BufferedReader(source);
-        checkHeader(r);
-        Pokemon row = null;
-        while(true){
-            // sigh...I wish Java had until loops...
-            row = parseRow(r);
-            System.out.println(row);
-            // TODO: check rating output
-            if (row==null) break;
+        try (FileReader source = new FileReader("./test.csv")) {
+            try (final FileReader results = new FileReader("./test-results.csv")) {
+                final BufferedReader r = new BufferedReader(source);
+                final BufferedReader rr = new BufferedReader(results);
+                checkHeader(r);
+                Pokemon row = null;
+                do {
+                    row = parseRow(r);
+                    System.out.println(row);
+                    // TODO: check rating output
+                } while (row != null);
+            }
         }
     }
 

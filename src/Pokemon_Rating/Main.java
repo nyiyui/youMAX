@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Rating youpokemon");
+        ScreenManager m = new ScreenManager();
+        m.push(new MenuScreen(new AllDataParallelScreen()));
+        m.run();
     }
 }
