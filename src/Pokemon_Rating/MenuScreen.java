@@ -14,7 +14,9 @@ public class MenuScreen extends Screen {
         // this is actually not too good as internationalising this will be a pain...
         System.out.println("    Pokemon* Record Rater");
         System.out.println("    * e is actually an e-acute from [ke] (IPA) (jGRASP bad)\n");
-        System.out.println(" ".repeat(34) + "---\n");
+        for (int i=0;i<34;i++)
+            System.out.print(" ");
+        System.out.println("---\n");
         System.out.println("    Choose an option:");
         System.out.println("      premise - display the premise of the project");
         System.out.println("      all - display all data");
