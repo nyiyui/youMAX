@@ -54,7 +54,7 @@ class AllDataParallelScreen extends AllDataScreen {
                 }
             }
             Pokemon finalResult[] = new Pokemon[hpOf.length];
-            for (int i=0;i< finalResult.length;i++){
+            for (int i = 0; i < finalResult.length; i++) {
                 finalResult[i] = new Pokemon(nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i]);
             }
             if (this.displayType == AllDataScreen.DISPLAY_TYPE_ALL) {
@@ -64,17 +64,16 @@ class AllDataParallelScreen extends AllDataScreen {
                 }
                 manager.pop();
                 manager.push(new BufferScreen());
-            } else if (this.displayType==AllDataScreen.DISPLAY_TYPE_BEST){
-                //TODO: implement
+            } else if (this.displayType == AllDataScreen.DISPLAY_TYPE_BEST) {
                 String best = "";
                 int max = -1;
-                for(int i=0;i< finalResult.length;i++){
-                    if (max < finalResult[i].rating()){
+                for (int i = 0; i < finalResult.length; i++) {
+                    if (max < finalResult[i].rating()) {
                         max = finalResult[i].rating();
                         best = finalResult[i].getName();
                     }
                 }
-                System.out.println(best+" is the BEST POKEMON, with a rating of "+max);
+                System.out.println(best + " is the BEST POKEMON, with a rating of " + max);
                 manager.pop();
                 manager.push(new BufferScreen());
             }
