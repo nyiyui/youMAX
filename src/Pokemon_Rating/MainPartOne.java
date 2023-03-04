@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Main {
+public class MainPartOne {
     public static void main(String[] args) {
         ScreenManager m = new ScreenManager();
         m.push(new MenuScreen(new AllDataParallelScreen()));
