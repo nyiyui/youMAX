@@ -37,32 +37,44 @@ class AllDataParallelScreen extends AllDataScreen {
                     String[] nameOf2 = new String[nameOf.length + ARRAY_EXTEND_LENGTH];
                     System.arraycopy(nameOf, 0, nameOf2, 0, nameOf.length);
                     nameOf = nameOf2;
-                    nameOf[i] = row.name;
+                    nameOf[i] = row.getName();
                     attackOf = expandIntArrTo(attackOf, i);
-                    attackOf[i] = row.attack;
+                    attackOf[i] = row.getAttack();
                     defenseOf = expandIntArrTo(defenseOf, i);
-                    defenseOf[i] = row.defense;
+                    defenseOf[i] = row.getDefense();
                     hpOf = expandIntArrTo(hpOf, i);
-                    hpOf[i] = row.hp;
+                    hpOf[i] = row.getHp();
                     speedOf = expandIntArrTo(speedOf, i);
-                    speedOf[i] = row.speed;
+                    speedOf[i] = row.getSpeed();
                     aestheticOf = expandIntArrTo(aestheticOf, i);
-                    aestheticOf[i] = row.aesthetic;
+                    aestheticOf[i] = row.getAesthetic();
                     rowsParsed++;
                 } else {
                     break;
                 }
             }
+            Pokemon finalResult[] = new Pokemon[hpOf.length];
+            for (int i=0;i< finalResult.length;i++){
+                finalResult[i] = new Pokemon(nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i]);
+            }
             if (this.displayType == AllDataScreen.DISPLAY_TYPE_ALL) {
                 System.out.println("NAME____ ATK DEF HP_ SPD AST RTG");
                 for (int i = 0; i < rowsParsed; i++) {
-                    System.out.printf("%8s %3d %3d %3d %3d %3d %3d\n", nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i], new Pokemon(nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i]).rating());
+                    System.out.printf("%8s %3d %3d %3d %3d %3d %3d\n", nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i], finalResult[i].rating());
                 }
                 manager.pop();
                 manager.push(new BufferScreen());
             } else if (this.displayType==AllDataScreen.DISPLAY_TYPE_BEST){
                 //TODO: implement
-                System.out.println("not impl'd *yet*:tm: :)");
+                String best = "";
+                int max = -1;
+                for(int i=0;i< finalResult.length;i++){
+                    if (max < finalResult[i].rating()){
+                        max = finalResult[i].rating();
+                        best = finalResult[i].getName();
+                    }
+                }
+                System.out.println(best+" is the BEST POKEMON, with a rating of "+max);
                 manager.pop();
                 manager.push(new BufferScreen());
             }
