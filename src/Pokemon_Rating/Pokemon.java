@@ -1,3 +1,9 @@
+/**
+ * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 4, 2023
+ * Purpose: Pokemon Class, data class for each Pokemon test case
+ */
 package Pokemon_Rating;
 
 import java.io.BufferedReader;
@@ -10,10 +16,25 @@ import java.util.Scanner;
 // TODO: top comment
 
 class Pokemon {
+    /**
+     * name of the Pokemon
+     */
     private String name;
+    /**
+     * Pokemon's ATK stat
+     */
     private int attack;
+    /**
+     * Pokemon's DEF stat
+     */
     private int defense;
+    /**
+     * Pokemon's HP stat
+     */
     private int hp;
+    /**
+     * Pokemon's SPD stat
+     */
     private int speed;
     /**
      * How cool-looking the Pokemon is. OR CUTE
@@ -53,7 +74,7 @@ class Pokemon {
                 ", aesthetic=" + aesthetic +
                 '}';
     }
-
+    // for test, according to kenneth
     public static void main(String[] args) throws ParseException, IOException {
         try (FileReader source = new FileReader("./test.csv")) {
             try (final FileReader results = new FileReader("./test-results.csv")) {
@@ -119,26 +140,50 @@ class Pokemon {
         return result;
     }
 
+    /**
+     * gets name of Pokemon
+     * @return Pokemon's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * gets Pokemon's attack stat
+     * @return Pokemon's ATK
+     */
     public int getAttack() {
         return attack;
     }
 
+    /**
+     * gets Pokemon's defense stat
+     * @return Pokemon's DEF
+     */
     public int getDefense() {
         return defense;
     }
 
+    /**
+     * gets Pokemon's hp stat
+     * @return Pokemon's HP
+     */
     public int getHp() {
         return hp;
     }
 
+    /**
+     * gets Pokemon's speed stat
+     * @return Pokemon's SPD
+     */
     public int getSpeed() {
         return speed;
     }
 
+    /**
+     * gets Pokemon's aesthetic score
+     * @return Pokemon's AST
+     */
     public int getAesthetic() {
         return aesthetic;
     }
