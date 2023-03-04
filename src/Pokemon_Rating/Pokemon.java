@@ -10,15 +10,15 @@ import java.util.Scanner;
 // TODO: top comment
 
 class Pokemon {
-    String name;
-    int attack;
-    int defense;
-    int hp;
-    int speed;
+    private String name;
+    private int attack;
+    private int defense;
+    private int hp;
+    private int speed;
     /**
-     * How cool-looking the Pokemon is.
+     * How cool-looking the Pokemon is. OR CUTE
      */
-    int aesthetic;
+    private int aesthetic;
 
     Pokemon() {
     }
@@ -117,5 +117,29 @@ class Pokemon {
         result.speed = fields.nextInt();
         result.aesthetic = fields.nextInt();
         return result;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getAesthetic() {
+        return aesthetic;
     }
 }
