@@ -22,9 +22,10 @@ public class MenuScreen extends Screen {
         System.out.println("      all - display all data");
         Scanner s = new Scanner(System.in);
         System.out.println("      best - display \"best\" (as decided by our metrics) Pokemon");
-        System.out.print("> ");
+        System.out.println("      bye - exits the Pokemon* Record Rater program");
         InputLoop:
         while (true) {
+            System.out.print("> ");
             String line = s.nextLine().toLowerCase();
             int displayType = 0;
             switch (line) {
@@ -39,6 +40,9 @@ public class MenuScreen extends Screen {
                     assert displayType != 0;
                     allDataScreen.setDisplayType(displayType);
                     manager.push(allDataScreen);
+                    break InputLoop;
+                case "bye":
+                    manager.exit();
                     break InputLoop;
                 default:
                     System.out.println("Invalid option chosen. Try again.");
