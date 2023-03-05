@@ -7,13 +7,10 @@
 package Pokemon_Rating;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
-
-// TODO: top comment
 
 class Pokemon {
     /**
