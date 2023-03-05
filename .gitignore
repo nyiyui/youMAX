@@ -27,3 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+src/Pokemon_Rating/Pokemon_Rating.iml
