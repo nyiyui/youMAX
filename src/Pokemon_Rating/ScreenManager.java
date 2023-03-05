@@ -1,7 +1,7 @@
 /**
  * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
  * Teacher: Ms. Krasteva
- * Date: March 4, 2023
+ * Date: March 5, 2023
  * Purpose: Manages the screens the user can see
  */
 package Pokemon_Rating;
