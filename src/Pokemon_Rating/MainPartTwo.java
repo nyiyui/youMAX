@@ -1,16 +1,15 @@
+/**
+ * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 4, 2023
+ * Purpose: driver class for part 2 of the assignment
+ */
 package Pokemon_Rating;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class MainPartTwo {
     public static void main(String[] args) {
         ScreenManager m = new ScreenManager();
-        m.push(new MenuScreen(new AllDataParallelScreen()));
-        m.run();
+//        m.push(new MenuScreen(new AllDataParallelScreen()));
+//        m.run();
     }
 }
