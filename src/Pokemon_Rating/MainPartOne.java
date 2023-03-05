@@ -1,11 +1,10 @@
+/**
+ * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 4, 2023
+ * Purpose: driver class for part 1 of the assignment
+ */
 package Pokemon_Rating;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class MainPartOne {
     public static void main(String[] args) {
