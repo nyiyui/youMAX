@@ -9,7 +9,7 @@ package Pokemon_Rating;
 public class MainPartTwo {
     public static void main(String[] args) {
         ScreenManager m = new ScreenManager();
-//        m.push(new MenuScreen(new AllDataParallelScreen()));
-//        m.run();
+        m.push(new MenuScreen(new AllDataTwoDeeScreen()));
+        m.run();
     }
 }
