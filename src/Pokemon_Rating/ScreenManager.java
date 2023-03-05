@@ -1,12 +1,21 @@
+/**
+ * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 4, 2023
+ * Purpose: Manages the screens the user can see
+ */
 package Pokemon_Rating;
 
 import java.util.ArrayList;
 
 class ScreenManager {
-    //TODO: check comments
+    //TODO: check comments and purpose in top comments
     ArrayList<Screen> screens;
     // using ArrayList instead of Stack as we don't know if we're allowed to use Stack
 
+    /**
+     * initializes empty arraylist
+     */
     ScreenManager() {
         screens = new ArrayList<>();
     }
@@ -40,6 +49,10 @@ class ScreenManager {
             current.tick(this);
         }
     }
+
+    /**
+     * Exits the program by completely emptying the screen manager
+     */
     void exit(){
         while (screens.size() > 0){
             pop();
