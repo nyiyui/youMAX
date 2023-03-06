@@ -2,7 +2,7 @@
  * Names: Ken Shibata, Youmin Lee, Ivy Zhuang
  * Teacher: Ms. Krasteva
  * Date: March 5, 2023
- * Purpose:
+ * Purpose: Parallel array-based implementation of rating app
  */
 package Pokemon_Rating;
 
