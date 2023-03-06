@@ -1,5 +1,5 @@
 /**
- * Names: Ken Shibata, Yoummin Lee, Ivy Zhuang
+ * Names: Ken Shibata, Youmin Lee, Ivy Zhuang
  * Teacher: Ms. Krasteva
  * Date: March 5, 2023
  * Purpose: Manages the screens the user can see
