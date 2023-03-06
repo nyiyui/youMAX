@@ -71,22 +71,6 @@ class Pokemon {
                 ", aesthetic=" + aesthetic +
                 '}';
     }
-    // for test, according to kenneth
-    public static void main(String[] args) throws ParseException, IOException {
-        try (FileReader source = new FileReader("./test.csv")) {
-            try (final FileReader results = new FileReader("./test-results.csv")) {
-                final BufferedReader r = new BufferedReader(source);
-                final BufferedReader rr = new BufferedReader(results);
-                checkHeader(r);
-                Pokemon row = null;
-                do {
-                    row = parseRow(r);
-                    System.out.println(row);
-                    // TODO: check rating output
-                } while (row != null);
-            }
-        }
-    }
 
     /**
      * Checks whether the first row (header) of an input csv file for Pokemon is valid.
