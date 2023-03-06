@@ -38,9 +38,6 @@ class Pokemon {
      */
     private int aesthetic;
 
-    Pokemon() {
-    }
-
     Pokemon(String name, int attack, int defense, int hp, int speed, int aesthetic) {
         this.name = name;
         this.attack = attack;
