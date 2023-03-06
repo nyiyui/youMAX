@@ -1,6 +1,11 @@
+/**
+ * Names: Ken Shibata, Youmin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 6, 2023
+ * Purpose: interface of screens that user interacts with
+ */
 package Pokemon_Rating;
-
-import java.io.FileNotFoundException;
+//TODO: plz check over purpose comment again :skull:
 
 abstract class Screen {
     /**
