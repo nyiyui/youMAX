@@ -60,7 +60,7 @@ class AllDataParallelScreen extends AllDataScreen {
                     break;
                 }
             }
-            Pokemon finalResult[] = new Pokemon[hpOf.length];
+            Pokemon finalResult[] = new Pokemon[rowsParsed];
             for (int i = 0; i < finalResult.length; i++) {
                 finalResult[i] = new Pokemon(nameOf[i], attackOf[i], defenseOf[i], hpOf[i], speedOf[i], aestheticOf[i]);
             }
