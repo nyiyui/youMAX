@@ -152,6 +152,9 @@ public class Sentence {
         verbs.add("ambles");
         verbs.add("discusses");
         verbs.add("travels");
+        verbs.add("jumps");
+        verbs.add("runs");
+        verbs.add("escapes");
 
         preposition.add("at");
         preposition.add("on");
