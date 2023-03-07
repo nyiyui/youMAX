@@ -63,10 +63,10 @@ public class Sentence {
      */
     private String generateSentence(){
         String result = generateSubject();
-        result = result.substring(0, 1).toUpperCase() + result.substring(1);
-        int idxV = (int) (Math.random() * verbs.size()), idxP = (int) (Math.random() * preposition.size());
+        result = result.substring(0, 1).toUpperCase() + result.substring(1); // capitalize first letter
+        int idxV = (int) (Math.random() * verbs.size()), idxP = (int) (Math.random() * preposition.size()); // randomly generated indices for verbs and prepositions
         result += " " + verbs.get(idxV) + " " + preposition.get(idxP) + " " + generateSubject();
-        result += punctuation.get((int) (Math.random() * punctuation.size()));
+        result += punctuation.get((int) (Math.random() * punctuation.size())); // adds punctuation
         return result;
     }
 
@@ -78,7 +78,7 @@ public class Sentence {
     private static String generateSubject(){
         String result = "";
         String vowels = "aeiou"; // for checking first letter of nouns or adjectives
-        int idxR = (int) (Math.random() * articles.size()); // randomly generated index within preposition list
+        int idxR = (int) (Math.random() * articles.size()); // randomly generated index within article list
         result += articles.get(idxR);
         int idxA = (int) (Math.random() * adjectives.size()); // randomly generated index within adjective list
         if(articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")){
