@@ -3,6 +3,7 @@
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
  * Purpose: Sentence class. Creates sentences with randomly generated words.
+ * Who did What: the whole thing -> Ivy :D
  */
 package CrazySentences;
 
@@ -33,18 +34,33 @@ public class Sentence {
      * list of punctuation
      */
     private static ArrayList<String> punctuation;
-
+    /**
+     * contains the sentence that was randomly generated
+     */
     private String sentence;
 
+    /**
+     * Constructor for Sentence.
+     * Loads the lists and then randomly generates a sentence.
+     */
     public Sentence(){
         loadLists();
         sentence = generateSentence();
     }
 
+    /**
+     * accessor method for sentence
+     * @return the sentence that was randomly generated
+     */
     public String getSentence() {
         return sentence;
     }
 
+    /**
+     * Generates a sentence with random words
+     * A sentence contains a subject, a verb, a preposition, and another subject
+     * @return a randomly generated sentence
+     */
     private String generateSentence(){
         String result = generateSubject();
         result = result.substring(0, 1).toUpperCase() + result.substring(1);
@@ -53,6 +69,12 @@ public class Sentence {
         result += punctuation.get((int) (Math.random() * punctuation.size()));
         return result;
     }
+
+    /**
+     * Generates a subject with random words.
+     * A subject contains an article, an adjective, and a noun
+     * @return a randomly generated subject
+     */
     private static String generateSubject(){
         String result = "";
         String vowels = "aeiou"; // for checking first letter of nouns or adjectives
