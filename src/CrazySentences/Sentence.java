@@ -142,7 +142,7 @@ public class Sentence {
         verbs.add("sits");
         verbs.add("kills");
         verbs.add("watches");
-        verbs.add("minimizes");
+        verbs.add("minimizes costs");
         verbs.add("poops");
         verbs.add("contemplates");
         verbs.add("locomotes");
@@ -156,7 +156,7 @@ public class Sentence {
         verbs.add("runs");
         verbs.add("escapes");
 
-        preposition.add("at");
+        preposition.add("to");
         preposition.add("on");
         preposition.add("in");
         preposition.add("from");
