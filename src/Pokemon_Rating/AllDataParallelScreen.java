@@ -73,10 +73,10 @@ class AllDataParallelScreen extends AllDataScreen {
             } else if (this.displayType == AllDataScreen.DISPLAY_TYPE_BEST) {
                 String best = "";
                 int max = -1;
-                for (int i = 0; i < finalResult.length; i++) {
-                    if (max < finalResult[i].rating()) {
-                        max = finalResult[i].rating();
-                        best = finalResult[i].getName();
+                for (Pokemon pokemon : finalResult) {
+                    if (max < pokemon.rating()) {
+                        max = pokemon.rating();
+                        best = pokemon.getName();
                     }
                 }
                 System.out.println(best + " is the BEST POKEMON, with a rating of " + max);

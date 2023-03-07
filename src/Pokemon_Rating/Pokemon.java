@@ -38,6 +38,21 @@ class Pokemon {
      */
     private int aesthetic;
 
+    /**
+     * Make a blank Pokemon instance.
+     */
+    public Pokemon() {
+    }
+
+    /**
+     * Make a Pokemon instance.
+     * @param name name
+     * @param attack ATK stat
+     * @param defense DEF atat
+     * @param hp HP stats
+     * @param speed SPD stat
+     * @param aesthetic how cute/cool it is
+     */
     Pokemon(String name, int attack, int defense, int hp, int speed, int aesthetic) {
         this.name = name;
         this.attack = attack;
@@ -53,6 +68,11 @@ class Pokemon {
      */
     private static final String[] HEADER_NAMES = {"name", "attack", "defense", "hp", "speed", "aesthetic"};
 
+
+    /**
+     * Calculate the rating of the Pokemon, which is the sum of stats ATK, DEF, HP, SPD, and aesthetic.
+     * @return rating of this Pokemon
+     */
     int rating() {
         return attack + defense + hp + speed + aesthetic;
     }
