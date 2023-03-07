@@ -118,6 +118,8 @@ public class Sentence {
         nouns.add("universe");
         nouns.add("squid");
         nouns.add("apple");
+        nouns.add("pigeon");
+        nouns.add("flounder");
 
         adjectives.add("short");
         adjectives.add("dazzling");
@@ -130,6 +132,10 @@ public class Sentence {
         adjectives.add("furious");
         adjectives.add("spectacular");
         adjectives.add("fancy");
+        adjectives.add("overjoyed");
+        adjectives.add("icy");
+        adjectives.add("sunny");
+        adjectives.add("shiny");
 
         verbs.add("languishes");
         verbs.add("walks");
@@ -143,6 +149,9 @@ public class Sentence {
         verbs.add("vaults");
         verbs.add("withers");
         verbs.add("prevails");
+        verbs.add("ambles");
+        verbs.add("discusses");
+        verbs.add("travels");
 
         preposition.add("at");
         preposition.add("on");
