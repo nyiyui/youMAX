@@ -1,3 +1,9 @@
+/**
+ * Names: Ken Shibata, Youmin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 6, 2023
+ * Purpose: displays the premise of the program to the user and also is tells the user a bonus story ;)
+ */
 package Pokemon_Rating;
 
 public class PremiseScreen extends Screen{
