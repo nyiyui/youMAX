@@ -3,7 +3,7 @@
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
  * Purpose: Sentence class. Creates sentences with randomly generated words.
- * Who did What: the whole thing -> Ivy :D
+ * Contributions: the whole thing -> Ivy :D
  */
 package CrazySentences;
 

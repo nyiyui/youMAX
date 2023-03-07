@@ -2,8 +2,8 @@
  * Names: Ivy Zhuang, Ken Shibata, Youmin Lee
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
- * Purpose: driver class, shows user 5 randomly generated sentences
- * Who did What: the whole thing -> Ivy :D
+ * Purpose: driver class, shows user 5 randomly generated sentences as well as
+ * Contributions: the whole thing -> Ivy :D
  */
 package CrazySentences;
 
