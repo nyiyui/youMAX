@@ -9,7 +9,7 @@ package Pokemon_Rating;
 import java.util.ArrayList;
 
 class ScreenManager {
-    //TODO: check comments and purpose in top comments
+    
     ArrayList<Screen> screens;
     // using ArrayList instead of Stack as we don't know if we're allowed to use Stack
 

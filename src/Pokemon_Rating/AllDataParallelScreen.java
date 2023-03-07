@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.text.ParseException;
 
 class AllDataParallelScreen extends AllDataScreen {
-    //TODO: add to purpose in top comments
     private static final int ARRAY_EXTEND_LENGTH = 3;
 
     private static int[] expandIntArrTo(int arr[], int i) {

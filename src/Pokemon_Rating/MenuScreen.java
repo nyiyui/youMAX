@@ -9,7 +9,7 @@ package Pokemon_Rating;
 import java.util.Scanner;
 
 public class MenuScreen extends Screen {
-    //TODO: comments? also check if purpose makes sense
+
     AllDataScreen allDataScreen;
 
     MenuScreen(AllDataScreen allDataScreen) {
