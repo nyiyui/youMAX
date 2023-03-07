@@ -120,8 +120,10 @@ public class Sentence {
         nouns.add("apple");
         nouns.add("pigeon");
         nouns.add("flounder");
+        nouns.add("horse");
 
         adjectives.add("short");
+        adjectives.add("ginormous");
         adjectives.add("dazzling");
         adjectives.add("deadly");
         adjectives.add("happy");
@@ -140,7 +142,7 @@ public class Sentence {
         verbs.add("languishes");
         verbs.add("walks");
         verbs.add("sits");
-        verbs.add("kills");
+        verbs.add("scampers");
         verbs.add("watches");
         verbs.add("minimizes costs");
         verbs.add("poops");
@@ -148,7 +150,7 @@ public class Sentence {
         verbs.add("locomotes");
         verbs.add("vaults");
         verbs.add("withers");
-        verbs.add("prevails");
+        verbs.add("gallops");
         verbs.add("ambles");
         verbs.add("discusses");
         verbs.add("travels");
@@ -159,7 +161,7 @@ public class Sentence {
         preposition.add("to");
         preposition.add("on");
         preposition.add("in");
-        preposition.add("from");
+        preposition.add("after");
         preposition.add("for");
         preposition.add("around");
         preposition.add("with");
