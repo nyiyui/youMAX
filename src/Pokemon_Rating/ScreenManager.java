@@ -44,9 +44,8 @@ class ScreenManager {
     void run() {
         while (screens.size() > 0) {
             Screen current = screens.get(screens.size()-1);
-            System.out.println("current: "+current);
-            System.out.println(screens);
             current.tick(this);
+
         }
     }
 

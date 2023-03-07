@@ -96,6 +96,5 @@ class AllDataParallelScreen extends AllDataScreen {
             manager.pop();
             manager.push(new BufferScreen());
         }
-        manager.pop();
     }
 }

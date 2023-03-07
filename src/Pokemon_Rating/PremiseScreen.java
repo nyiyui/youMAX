@@ -14,5 +14,6 @@ public class PremiseScreen extends Screen{
         System.out.println("Bonus Story:");
         System.out.println("  Once upon a time, YouGOD appeared out of nowhere. YouGod felt a little lonely and created two distinct forces of the world, YouMax and YouMin, to ease her melancholic YouHeart. Out of the two forces, YouMax made the Younimals and YouMin created the Youlants. In particular, the Younimals consisted of the YouPeople, YouCat and the YouKai. Upon the YouEarth, YouGod’s YouHeart felt comforted by the new YouCreations surrounding her. To celebrate this occasion, YouGod invented the YouKaiWatch. This watch could call upon YouKai to aid the YouPeople. Thus, interdependency was set in place by YouGod. Feeling content with herself, YouGod transcended into another Youniverse. The End :>");
         manager.pop();
+        manager.push(new BufferScreen());
     }
 }
