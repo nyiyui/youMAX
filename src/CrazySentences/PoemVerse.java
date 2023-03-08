@@ -64,12 +64,12 @@ public class PoemVerse {
         if (choice == 0) {
             line1 = generateSubject(atNouns) + ",";
             line1 = capitalize(line1);
-            line2 = getRandomVerb() + " " + getRandomPreposition() + " " + generateSubject(atNouns);
+            line2 = getRandomVerb() + " " + getRandomPreposition() + " " + generateSubject(atNouns) + ".";
             line2 = capitalize(line2);
         } else {
             line1 = getRandomPreposition() + " " + generateSubject(etNouns) + ",";
             line1 = capitalize(line1);
-            line2 = getRandomVerb() +" " + generateSubject(etNouns);
+            line2 = getRandomVerb() + " " + generateSubject(etNouns) + ".";
             line2 = capitalize(line2);
         }
     }
@@ -98,27 +98,32 @@ public class PoemVerse {
 
     /**
      * randomly generates a random article from the articles arraylist
+     *
      * @return a random article
      */
-    private String getRandomArticle(){
+    private String getRandomArticle() {
         return articles.get((int) (Math.random() * articles.size()));
     }
 
     /**
      * randomly generates a random adjective from the adjectives arraylist
+     *
      * @return a random adjective
      */
-    private String getRandomAdjective(){
+    private String getRandomAdjective() {
         return adjectives.get((int) (Math.random() * adjectives.size()));
     }
+
     /**
      * randomly generates a random noun from one of the noun arraylists
+     *
      * @param nouns the list of nouns that the method randomly chooses from (either atNouns or etNouns)
      * @return a random noun
      */
-    private String getRandomNoun(ArrayList<String> nouns){
+    private String getRandomNoun(ArrayList<String> nouns) {
         return nouns.get((int) (Math.random() * nouns.size()));
     }
+
     /**
      * randomly generates a random preposition from the preposition arraylist
      *
