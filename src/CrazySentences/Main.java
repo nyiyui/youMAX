@@ -8,6 +8,7 @@
 package CrazySentences;
 
 public class Main {
+    // TODO: make main menu for both crazy sentences and AI poem
     public static void main(String[] args) {
         System.out.println("Here are your 5 CRAZY SENTENCES!!!");
         for (int i=0;i<5;i++){
