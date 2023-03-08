@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.text.ParseException;
 
 class AllDataTwoDeeScreen extends AllDataScreen {
-    //TODO: check over ig? comments?
+
     private static final int ARRAY_EXTEND_LENGTH = 3;
     private static final int NUM_OF_STATS = 5;
 
     private static int[][] expandIntArrTo(int arr[][], int idx) {
         if (idx >= arr.length) {
             int[][] arr2 = new int[arr.length + ARRAY_EXTEND_LENGTH][NUM_OF_STATS];
-            for (int i=0;i< arr.length;i++){
+            for (int i = 0; i < arr.length; i++) {
                 arr2[i] = arr[i].clone();
             }
             arr = arr2;
@@ -93,6 +93,5 @@ class AllDataTwoDeeScreen extends AllDataScreen {
             manager.pop();
             manager.push(new BufferScreen());
         }
-        manager.pop();
     }
 }

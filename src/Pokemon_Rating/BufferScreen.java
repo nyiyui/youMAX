@@ -1,7 +1,12 @@
+/**
+ * Names: Ken Shibata, Youmin Lee, Ivy Zhuang
+ * Teacher: Ms. Krasteva
+ * Date: March 6, 2023
+ * Purpose: Waits for the user to press enter.
+ */
 package Pokemon_Rating;
 
 import java.util.Scanner;
-
 /**
  * Waits for the user to press enter.
  */

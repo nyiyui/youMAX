@@ -8,8 +8,11 @@ package Pokemon_Rating;
 
 import java.util.Scanner;
 
+/**
+ * Displays a menu screen to the user, and handles pushing those screens.
+ */
 public class MenuScreen extends Screen {
-    //TODO: comments? also check if purpose makes sense
+
     AllDataScreen allDataScreen;
 
     MenuScreen(AllDataScreen allDataScreen) {
