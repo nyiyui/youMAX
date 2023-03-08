@@ -3,10 +3,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MacsBook {
+    /**
+     * List of student names.
+     */
     private ArrayList<String> names = new ArrayList<>();
+    /**
+     * List of student numbers.
+     */
     private ArrayList<Integer> numbers = new ArrayList<>();
+    /**
+     * List of assignment marks.
+     */
     private ArrayList<Double> aMarks = new ArrayList<>();
+    /**
+     * List of test marks.
+     */
     private ArrayList<Double> tMarks = new ArrayList<>();
+    /**
+     * List of final marks.
+     */
     private ArrayList<Double> fMarks = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -14,13 +29,12 @@ public class MacsBook {
         book.menu();
     }
 
+    /**
+     * Main menu. Dispatches to other menu methods.
+     */
     private void menu() {
         System.out.println("Menu!");
-        System.out.println("Options");
-        System.out.println("  create - reset and add marks");
-        System.out.println("  all - view all student names, numbers, marks, and averages");
-        System.out.println("  single - view single student info");
-        System.out.println("  exit - exit application");
+        showHelp();
         Scanner s = new Scanner(System.in);
         InputLoop:
         while (true) {
@@ -30,6 +44,12 @@ public class MacsBook {
             switch (line) {
                 case "create":
                     createMenu();
+                    break;
+                case "help":
+                    showHelp();
+                    break;
+                case "halp":
+                    System.out.println("You need help? Type \"help\"!");
                     break;
                 case "all":
                     displayAll = true;
@@ -45,6 +65,23 @@ public class MacsBook {
         }
     }
 
+    /**
+     * Shows a help menu with available commands.
+     */
+    private static void showHelp() {
+        System.out.println("--- Help!");
+        System.out.println("Options");
+        System.out.println("  help - show options");
+        System.out.println("  create - append marks");
+        System.out.println("  all - view all student names, numbers, marks, and averages");
+        System.out.println("  single - view single student info");
+        System.out.println("  exit - exit application");
+    }
+
+    /**
+     * Menu for choosing a student
+     * @param displayAll display all student records?
+     */
     private void marksMenu(boolean displayAll) {
         Scanner s = new Scanner(System.in);
         if (!displayAll) {
@@ -64,7 +101,7 @@ public class MacsBook {
                     System.out.println("--- name not found in records");
                     continue;
                 }
-                int chosenI = -1;
+                int chosenI;
                 if (matches.size() == 1) {
                     chosenI = matches.get(0);
                 } else {
@@ -95,6 +132,10 @@ public class MacsBook {
         }
     }
 
+    /**
+     * Print records for a single student
+     * @param i student index
+     */
     private void printRecord(int i) {
         System.out.printf("Student Index %d\n", i);
         System.out.printf("  Name: %s\n", names.get(i));
@@ -105,10 +146,19 @@ public class MacsBook {
         System.out.printf("  Average: %.2f\n", studentAverage(i));
     }
 
+    /**
+     * Gets a student's average mark.
+     * @param i student index
+     * @return average mark
+     */
     private double studentAverage(int i) {
         return (aMarks.get(i) + tMarks.get(i) + fMarks.get(i)) / 3.0;
     }
 
+    /**
+     * Gets a class' average mark.
+     * @return average mark
+     */
     private double classAverage() {
         double sum = 0.0;
         for (int i = 0; i < names.size(); i++) {
@@ -117,6 +167,9 @@ public class MacsBook {
         return sum / (double) names.size();
     }
 
+    /**
+     * Menu for creating records.
+     */
     private void createMenu() {
         Scanner s = new Scanner(System.in);
         System.out.println("=== Create Data");
