@@ -1,8 +1,15 @@
+/**
+ * Names: Ivy Zhuang, Ken Shibata, Youmin Lee
+ * Teacher: Ms. Krasteva
+ * Date: March 7, 2023
+ * Purpose: Sentence class. Creates sentences with randomly generated words.
+ * Contributions: the whole thing -> Ivy :D
+ */
 package CrazySentences;
 
 import java.util.ArrayList;
 
-public class AIPoem {
+public class PoemVerse {
     /**
      * list of nouns in -at
      */
@@ -28,10 +35,44 @@ public class AIPoem {
      */
     private static ArrayList<String> preposition;
 
-    public AIPoem() {
+    /**
+     * first line of the verse
+     */
+    private String line1;
+    /**
+     * second line of the verse
+     */
+    private String line2;
+
+    public PoemVerse() {
         loadLists();
     }
 
+    private void generateVerse(){
+
+    }
+
+    /**
+     * 
+     * @param nouns
+     * @return
+     */
+    private static String generateSubject(ArrayList<String> nouns){
+        String result = "";
+        String vowels = "aeiou"; // for checking first letter of nouns or adjectives
+        int idxR = (int) (Math.random() * articles.size()); // randomly generated index within article list
+        result += articles.get(idxR);
+        int idxA = (int) (Math.random() * adjectives.size()); // randomly generated index within adjective list
+        if(articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")){
+            result += "n " + adjectives.get(idxA);
+        }
+        else{
+            result += " " + adjectives.get(idxA);
+        }
+        int idxN = (int) (Math.random() * nouns.size()); // randomly generated index within noun list
+        result += " " + nouns.get(idxN);
+        return result;
+    }
     /**
      * manually adds every word into their respective lists
      */
