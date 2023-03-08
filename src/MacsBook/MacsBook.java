@@ -101,7 +101,7 @@ public class MacsBook {
                     System.out.println("--- name not found in records");
                     continue;
                 }
-                int chosenI = -1;
+                int chosenI;
                 if (matches.size() == 1) {
                     chosenI = matches.get(0);
                 } else {
