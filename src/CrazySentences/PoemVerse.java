@@ -81,22 +81,44 @@ public class PoemVerse {
      * @param nouns list of nouns that is used to generate the subject
      * @return a rnadomly generated subject
      */
-    private static String generateSubject(ArrayList<String> nouns) {
+    private String generateSubject(ArrayList<String> nouns) {
         String result = "";
         String vowels = "aeiou"; // for checking first letter of nouns or adjectives
-        int idxR = (int) (Math.random() * articles.size()); // randomly generated index within article list
-        result += articles.get(idxR);
-        int idxA = (int) (Math.random() * adjectives.size()); // randomly generated index within adjective list
-        if (articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")) {
-            result += "n " + adjectives.get(idxA);
+        String art = getRandomArticle();
+        result += art;
+        String adj = getRandomAdjective();
+        if (art.equals("a") && vowels.contains(adj.charAt(0) + "")) {
+            result += "n " + adj;
         } else {
-            result += " " + adjectives.get(idxA);
+            result += " " + adj;
         }
-        int idxN = (int) (Math.random() * nouns.size()); // randomly generated index within noun list
-        result += " " + nouns.get(idxN);
+        result += " " + getRandomNoun(nouns);
         return result;
     }
 
+    /**
+     * randomly generates a random article from the articles arraylist
+     * @return a random article
+     */
+    private String getRandomArticle(){
+        return articles.get((int) (Math.random() * articles.size()));
+    }
+
+    /**
+     * randomly generates a random adjective from the adjectives arraylist
+     * @return a random adjective
+     */
+    private String getRandomAdjective(){
+        return adjectives.get((int) (Math.random() * adjectives.size()));
+    }
+    /**
+     * randomly generates a random noun from one of the noun arraylists
+     * @param nouns the list of nouns that the method randomly chooses from (either atNouns or etNouns)
+     * @return a random noun
+     */
+    private String getRandomNoun(ArrayList<String> nouns){
+        return nouns.get((int) (Math.random() * nouns.size()));
+    }
     /**
      * randomly generates a random preposition from the preposition arraylist
      *
