@@ -172,7 +172,7 @@ public class MacsBook {
             }
         }
         System.out.println("--- Input Student Final (Project) Marks (FM) (percent)");
-        for (int i = initc; i < names.size(); i++) {
+        for (int i = init; i < names.size(); i++) {
             System.out.printf("%d\tFM for %s> ", i, names.get(i));
             String line = s.nextLine();
             try {

@@ -59,6 +59,9 @@ public class PoemVerse {
         return line1 + "\n" + line2;
     }
 
+    /**
+     * Generates 2 lines of beautiful poems.
+     */
     private void generateVerse() {
         int choice = (int) (Math.random() * 2); // randomly chooses to use -et nouns or -at nouns
         if (choice == 0) {
