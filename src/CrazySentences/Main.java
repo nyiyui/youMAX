@@ -17,7 +17,7 @@ public class Main {
         System.out.println("\nHere's a funky 10 line poem too <3");
         for (int i=0;i<5;i++){
             PoemVerse poemVerse = new PoemVerse();
-            System.out.println(poemVerse.toString());
+            System.out.println(poemVerse);
         }
     }
 }
