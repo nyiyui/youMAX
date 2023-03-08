@@ -52,7 +52,7 @@ public class MacsBook {
                 System.out.println("--- Choose Student");
                 System.out.println("Note: input blank line to exit prematurely.");
                 System.out.print("> ");
-                String line = s.nextLine().strip();
+                String line = s.nextLine().trim();
                 if (line.length() == 0) {
                     break;
                 }
@@ -128,7 +128,7 @@ public class MacsBook {
             String line = s.nextLine();
             if (line.length() == 0)
                 break;
-            names.add(line.strip());
+            names.add(line.trim());
         }
         System.out.println("--- Input Numbers");
         for (int i = init; i < names.size(); i++) {
