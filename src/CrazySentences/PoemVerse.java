@@ -46,16 +46,27 @@ public class PoemVerse {
 
     public PoemVerse() {
         loadLists();
+        generateVerse();
     }
 
     private void generateVerse(){
-
+        int choice = (int) (Math.random() * 2);
+        if(choice == 0){
+            line1 = generateSubject(atNouns);
+            line1 = line1.substring(0, 1).toUpperCase() + line1.substring(1);
+            
+        }
+        else{
+            line1 = generateSubject(etNouns);
+        }
     }
 
     /**
-     * 
-     * @param nouns
-     * @return
+     * Generates a random subject with randomly chosen words
+     * A subject consists of an article, an adjective, and a noun
+     *
+     * @param nouns list of nouns that is used to generate the subject
+     * @return a rnadomly generated subject
      */
     private static String generateSubject(ArrayList<String> nouns){
         String result = "";
