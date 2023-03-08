@@ -43,13 +43,14 @@ public class Sentence {
      * Constructor for Sentence.
      * Loads the lists and then randomly generates a sentence.
      */
-    public Sentence(){
+    public Sentence() {
         loadLists();
         sentence = generateSentence();
     }
 
     /**
      * accessor method for sentence
+     *
      * @return the sentence that was randomly generated
      */
     public String getSentence() {
@@ -59,9 +60,10 @@ public class Sentence {
     /**
      * Generates a sentence with random words
      * A sentence contains a subject, a verb, a preposition, and another subject
+     *
      * @return a randomly generated sentence
      */
-    private String generateSentence(){
+    private String generateSentence() {
         String result = generateSubject();
         result = result.substring(0, 1).toUpperCase() + result.substring(1); // capitalize first letter
         int idxV = (int) (Math.random() * verbs.size()), idxP = (int) (Math.random() * preposition.size()); // randomly generated indices for verbs and prepositions
@@ -73,28 +75,29 @@ public class Sentence {
     /**
      * Generates a subject with random words.
      * A subject contains an article, an adjective, and a noun
+     *
      * @return a randomly generated subject
      */
-    private static String generateSubject(){
+    private static String generateSubject() {
         String result = "";
         String vowels = "aeiou"; // for checking first letter of nouns or adjectives
         int idxR = (int) (Math.random() * articles.size()); // randomly generated index within article list
         result += articles.get(idxR);
         int idxA = (int) (Math.random() * adjectives.size()); // randomly generated index within adjective list
-        if(articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")){
+        if (articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")) {
             result += "n " + adjectives.get(idxA);
-        }
-        else{
+        } else {
             result += " " + adjectives.get(idxA);
         }
         int idxN = (int) (Math.random() * nouns.size()); // randomly generated index within noun list
         result += " " + nouns.get(idxN);
         return result;
     }
+
     /**
      * manually adds every word into their respective lists
      */
-    private static void loadLists(){
+    private static void loadLists() {
         articles = new ArrayList<>();
         nouns = new ArrayList<>();
         adjectives = new ArrayList<>();
