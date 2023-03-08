@@ -49,15 +49,28 @@ public class PoemVerse {
         generateVerse();
     }
 
-    private void generateVerse(){
-        int choice = (int) (Math.random() * 2);
-        if(choice == 0){
-            line1 = generateSubject(atNouns);
-            line1 = line1.substring(0, 1).toUpperCase() + line1.substring(1);
-            
-        }
-        else{
-            line1 = generateSubject(etNouns);
+    /**
+     * returns string representation as a 2-line poem verse
+     *
+     * @return a string representation of the object.
+     */
+    @Override
+    public String toString() {
+        return line1 + "\n" + line2;
+    }
+
+    private void generateVerse() {
+        int choice = (int) (Math.random() * 2); // randomly chooses to use -et nouns or -at nouns
+        if (choice == 0) {
+            line1 = generateSubject(atNouns) + ",";
+            line1 = capitalize(line1);
+            line2 = getRandomVerb() + " " + getRandomPreposition() + " " + generateSubject(atNouns);
+            line2 = capitalize(line2);
+        } else {
+            line1 = getRandomPreposition() + " " + generateSubject(etNouns) + ",";
+            line1 = capitalize(line1);
+            line2 = getRandomVerb() +" " + generateSubject(etNouns);
+            line2 = capitalize(line2);
         }
     }
 
@@ -68,28 +81,57 @@ public class PoemVerse {
      * @param nouns list of nouns that is used to generate the subject
      * @return a rnadomly generated subject
      */
-    private static String generateSubject(ArrayList<String> nouns){
+    private static String generateSubject(ArrayList<String> nouns) {
         String result = "";
         String vowels = "aeiou"; // for checking first letter of nouns or adjectives
         int idxR = (int) (Math.random() * articles.size()); // randomly generated index within article list
         result += articles.get(idxR);
         int idxA = (int) (Math.random() * adjectives.size()); // randomly generated index within adjective list
-        if(articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")){
+        if (articles.get(idxR).equals("a") && vowels.contains(adjectives.get(idxA).charAt(0) + "")) {
             result += "n " + adjectives.get(idxA);
-        }
-        else{
+        } else {
             result += " " + adjectives.get(idxA);
         }
         int idxN = (int) (Math.random() * nouns.size()); // randomly generated index within noun list
         result += " " + nouns.get(idxN);
         return result;
     }
+
+    /**
+     * randomly generates a random preposition from the preposition arraylist
+     *
+     * @return a random preposition
+     */
+    private String getRandomPreposition() {
+        return preposition.get((int) (Math.random() * preposition.size()));
+    }
+
+    /**
+     * randomly generates a random verb from the verbs arraylist
+     *
+     * @return a random verb
+     */
+    private String getRandomVerb() {
+        return verbs.get((int) (Math.random() * verbs.size()));
+    }
+
+    /**
+     * capitalizes the first letter of the given string
+     *
+     * @param s String to have its first letter capitalized
+     * @return the string with its first letter capitalized
+     */
+    private String capitalize(String s) {
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
     /**
      * manually adds every word into their respective lists
      */
-    private static void loadLists(){
+    private static void loadLists() {
         articles = new ArrayList<>();
         atNouns = new ArrayList<>();
+        etNouns = new ArrayList<>();
         adjectives = new ArrayList<>();
         verbs = new ArrayList<>();
         preposition = new ArrayList<>();
