@@ -3,7 +3,7 @@
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
  * Purpose: driver class, allows the user to pick the amount of verses they would like in their poem and display it.
- * Contributions: Ivy created the driver class and original code, Youmin added the user input scanner
+ * Contributions: Ivy created the driver class and PoemVerse Class, Youmin added the user input scanner
  * and changed it so that the number of verses in the poem is to the user's choice and the welcome line. Also added in the comments.
  */
 package CrazySentences;

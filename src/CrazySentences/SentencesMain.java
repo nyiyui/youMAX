@@ -3,7 +3,8 @@
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
  * Purpose: driver class, gives 5 randomly generated sentences that seem to make no sense but have a clear structure to them :D
- * Contributions: Ivy created the driver class and original code, Youmin added the comments and the introduction line.
+ * Contributions: Ivy created the driver class, Sentence class, and for loop that shows the 5 sentences.
+ * Youmin added the comments and the introduction line.
  */
 package CrazySentences;
 
