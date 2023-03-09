@@ -1,24 +1,67 @@
 /**
- * Names
+ * Names: Ivy Zhuang, Youmin Lee, Ken Shibata
+ * Teacher: Ms. Krasteva
+ * Date: March 8, 2023
+ * Purpose: simulates one round of Bridge
+ * Contributions: Ivy did whole Bridge Class
  */
 package Bridge;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class IvyKenYouminBridge {
-    static ArrayList<String> deck;
-    static String player1 = "", player2 = "", player3 = "", player4 = "";
-    static String winner;
-    static int maxPoints;
+public class Bridge {
+    /**
+     * traditional deck of cards (52 cards)
+     */
+    private ArrayList<String> deck;
+    /**
+     * hands of each player. There are four players, thus players 1-4
+     */
+    private String player1 = "", player2 = "", player3 = "", player4 = "";
+    /**
+     * the winner of one round of bridge
+     */
+    private String winner;
+    /**
+     * the maximum number of points a player has, aka the number of points the winner has
+     */
+    private int maxPoints;
+
+    /**
+     * Constructor for Bridge. Initializes an empty deck
+     */
+    public Bridge() {
+        deck = new ArrayList<>();
+    }
 
     public static void main(String[] args) {
+        // TODO: copy this main maethod into a separate driver class and add some other UI elements
         System.out.println("Playing one round of Bridge!!");
-        deck = new ArrayList<>();
+        Bridge round = new Bridge();
+        round.simulateRound();
+
+    }
+
+    /**
+     * Simulates one round of bridge
+     */
+    public void simulateRound(){
         fillDeck();
         shuffleDeck();
         dealCards();
         showPlayerHand(player1, "Youmin");
+        showPlayerHand(player2, "Youmax");
+        showPlayerHand(player3, "YouGod");
+        showPlayerHand(player4, "Youniverse");
+        showWinner();
+    }
+
+    /**
+     * shows the winner and the number of points said winner has to the user
+     */
+    private void showWinner(){
+        System.out.println("\nThe winner is "+winner+", with "+maxPoints+" points!!");
     }
 
     /**
@@ -26,7 +69,7 @@ public class IvyKenYouminBridge {
      * @param hand the hand of the player, contains 13 cards
      * @param playerName the name of the player
      */
-    static void showPlayerHand(String hand, String playerName){
+    private void showPlayerHand(String hand, String playerName){
         System.out.println("Showing "+playerName + "'s hand:");
         String spades = "", hearts = "", diamonds = "", clubs = "";
         int s = 0, h = 0, d = 0, c = 0;
@@ -38,11 +81,11 @@ public class IvyKenYouminBridge {
                 spades += card + " ";
                 s++;
             }
-            else if(card.charAt(i) == 'H'){
+            else if(card.charAt(1) == 'H'){
                 hearts += card + " ";
                 h++;
             }
-            else if(card.charAt(i) == 'D'){
+            else if(card.charAt(1) == 'D'){
                 diamonds += card + " ";
                 d++;
             }
@@ -63,10 +106,10 @@ public class IvyKenYouminBridge {
                 points += 1;
             }
         }
-        System.out.println("Spades:\t"+spades);
-        System.out.println("Hearts:\t"+hearts);
+        System.out.println("Spades:\t\t"+spades);
+        System.out.println("Hearts:\t\t"+hearts);
         System.out.println("Diamonds:\t"+diamonds);
-        System.out.println("Clubs:\t"+clubs);
+        System.out.println("Clubs:\t\t"+clubs);
         // check for void, singleton, and doubleton
         if (s == 0 || h == 0 || d == 0 || c == 0){
             System.out.println(playerName+" has a void!");
@@ -81,7 +124,7 @@ public class IvyKenYouminBridge {
             points += 1;
         }
         // shows player's total points
-        System.out.println(playerName+" has "+points+" points!");
+        System.out.println(playerName+" has "+points+" points!\n");
         // updates winner and max points
         if (maxPoints < points){
             winner = playerName;
@@ -92,7 +135,7 @@ public class IvyKenYouminBridge {
     /**
      * shuffles the deck
      */
-    static void shuffleDeck() {
+    private void shuffleDeck() {
         Collections.shuffle(deck);
         System.out.println("Deck has been shuffled!");
     }
@@ -100,7 +143,7 @@ public class IvyKenYouminBridge {
     /**
      * deal cards to each player's hand
      */
-    static void dealCards() {
+    private void dealCards() {
         while(!deck.isEmpty()){
             player1 += deck.remove(0);
             player2 += deck.remove(0);
@@ -112,7 +155,7 @@ public class IvyKenYouminBridge {
     /**
      * adds all cards into the text from one string that contains all the cards
      */
-    static void fillDeck() {
+    private void fillDeck() {
         String cards = "AD2D3D4D5D6D7D8D9DTDJDQDKD" +
                 "AC2C3C4C5C6C7C8C9CTCJCQCKC" +
                 "AH2H3H4H5H6H7H8H9HTHJHQHKH" +
@@ -121,4 +164,5 @@ public class IvyKenYouminBridge {
             deck.add(cards.substring(i, i + 2));
         }
     }
+
 }
