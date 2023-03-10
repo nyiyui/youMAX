@@ -3,13 +3,18 @@
  * Teacher: Ms. Krasteva
  * Date: March 7, 2023
  * Purpose: Sentence class. Creates sentences with randomly generated words.
- * Contributions: the whole thing -> Ivy :D
+ * Contributions: the whole thing -> Ivy :D (some refactoring by Ken)
  */
 package CrazySentences;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PoemVerse {
+    /**
+     * set to true when loadLists runs to prevent two assignments
+     */
+    private static boolean loadedWords = false;
     /**
      * list of nouns in -at
      */
@@ -63,18 +68,17 @@ public class PoemVerse {
      * Generates 2 lines of beautiful poems.
      */
     private void generateVerse() {
-        int choice = (int) (Math.random() * 2); // randomly chooses to use -et nouns or -at nouns
-        if (choice == 0) {
-            line1 = generateSubject(atNouns) + ",";
-            line1 = capitalize(line1);
-            line2 = getRandomVerb() + " " + getRandomPreposition() + " " + generateSubject(atNouns) + ".";
-            line2 = capitalize(line2);
+        int nounChoice = (int) (Math.random() * 2); // randomly chooses to use -et nouns or -at nouns
+        ArrayList<String> nouns;
+        if (nounChoice == 0) {
+            nouns = atNouns;
         } else {
-            line1 = getRandomPreposition() + " " + generateSubject(etNouns) + ",";
-            line1 = capitalize(line1);
-            line2 = getRandomVerb() + " " + generateSubject(etNouns) + ".";
-            line2 = capitalize(line2);
+            nouns = etNouns;
         }
+        line1=maybeGetRandomPreposition()+generateSubject(nouns)+",";
+        line2=getRandomVerb()+" "+maybeGetRandomPreposition()+generateSubject(nouns)+".";
+        line1 = capitalize(line1);
+        line2 = capitalize(line2);
     }
 
     /**
@@ -137,6 +141,18 @@ public class PoemVerse {
     }
 
     /**
+     * randomly generates a random preposition from the preposition arraylist
+     *
+     * @return maybe a random preposition with a blank space at the end
+     */
+    private String maybeGetRandomPreposition() {
+        if ((int) (Math.random() * 2) == 0) {
+            return getRandomPreposition()+" ";
+        }
+        return "";
+    }
+
+    /**
      * randomly generates a random verb from the verbs arraylist
      *
      * @return a random verb
@@ -159,87 +175,85 @@ public class PoemVerse {
      * manually adds every word into their respective lists
      */
     private static void loadLists() {
-        articles = new ArrayList<>();
-        atNouns = new ArrayList<>();
-        etNouns = new ArrayList<>();
-        adjectives = new ArrayList<>();
-        verbs = new ArrayList<>();
-        preposition = new ArrayList<>();
-
-        articles.add("the");
-        articles.add("a");
-
-        atNouns.add("cat");
-        atNouns.add("rat");
-        atNouns.add("bat");
-        atNouns.add("hat");
-        atNouns.add("mat");
-        atNouns.add("gnat");
-        atNouns.add("autocrat");
-        atNouns.add("democrat");
-        atNouns.add("brat");
-        atNouns.add("diplomat");
-        atNouns.add("thermostat");
-        atNouns.add("copycat");
-        atNouns.add("acrobat");
-        atNouns.add("meerkat");
-        atNouns.add("muskrat");
-
-        etNouns.add("racket");
-        etNouns.add("basket");
-        etNouns.add("supermarket");
-        etNouns.add("magnet");
-        etNouns.add("quintuplet");
-        etNouns.add("clarinet");
-        etNouns.add("alphabet");
-        etNouns.add("leaflet");
-        etNouns.add("circlet");
-        etNouns.add("bayonet");
-        etNouns.add("wallet");
-        etNouns.add("goblet");
-        etNouns.add("amulet");
-        etNouns.add("islet");
-
-        adjectives.add("bewitching");
-        adjectives.add("ginormous");
-        adjectives.add("dazzling");
-        adjectives.add("deadly");
-        adjectives.add("happy");
-        adjectives.add("distressed");
-        adjectives.add("amazing");
-        adjectives.add("omniscient");
-        adjectives.add("extraordinary");
-        adjectives.add("furious");
-        adjectives.add("spectacular");
-        adjectives.add("fancy");
-        adjectives.add("overjoyed");
-        adjectives.add("icy");
-        adjectives.add("delightful");
-        adjectives.add("unparalleled");
-
-        verbs.add("sings");
-        verbs.add("dances");
-        verbs.add("plays");
-        verbs.add("transforms");
-        verbs.add("reminisces");
-        verbs.add("contemplates");
-        verbs.add("ruminates");
-        verbs.add("anticipate");
-        verbs.add("withers");
-        verbs.add("gallops");
-        verbs.add("ambles");
-        verbs.add("illuminates");
-        verbs.add("transcends");
-        verbs.add("reincarnates");
-        verbs.add("veils");
-
-        preposition.add("to");
-        preposition.add("on");
-        preposition.add("in");
-        preposition.add("after");
-        preposition.add("for");
-        preposition.add("around");
-        preposition.add("with");
-        preposition.add("over");
+        if (loadedWords) return;
+        articles = new ArrayList<>(Arrays.asList("the", "a"));
+        atNouns = new ArrayList<>(Arrays.asList(
+                "cat",
+                "rat",
+                "bat",
+                "hat",
+                "mat",
+                "gnat",
+                "autocrat",
+                "democrat",
+                "brat",
+                "diplomat",
+                "thermostat",
+                "copycat",
+                "acrobat",
+                "meerkat",
+                "muskrat"
+        ));
+        etNouns = new ArrayList<>(Arrays.asList(
+                "racket",
+                "basket",
+                "supermarket",
+                "magnet",
+                "quintuplet",
+                "clarinet",
+                "alphabet",
+                "leaflet",
+                "circlet",
+                "bayonet",
+                "wallet",
+                "goblet",
+                "amulet",
+                "islet"
+        ));
+        adjectives = new ArrayList<>(Arrays.asList(
+                "bewitching",
+                "ginormous",
+                "dazzling",
+                "deadly",
+                "happy",
+                "distressed",
+                "amazing",
+                "omniscient",
+                "extraordinary",
+                "furious",
+                "spectacular",
+                "fancy",
+                "overjoyed",
+                "icy",
+                "delightful",
+                "unparalleled"
+        ));
+        verbs = new ArrayList<>(Arrays.asList(
+                "sings",
+                "dances",
+                "plays",
+                "transforms",
+                "reminisces",
+                "contemplates",
+                "ruminates",
+                "anticipate",
+                "withers",
+                "gallops",
+                "ambles",
+                "illuminates",
+                "transcends",
+                "reincarnates",
+                "veils"
+        ));
+        preposition = new ArrayList<>(Arrays.asList(
+                "to",
+                "on",
+                "in",
+                "after",
+                "for",
+                "around",
+                "with",
+                "over"
+        ));
     }
 }
