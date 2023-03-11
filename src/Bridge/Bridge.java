@@ -15,6 +15,9 @@ public class Bridge {
      * traditional deck of cards (52 cards)
      */
     private ArrayList<String> deck;
+    /**
+     * names of the players in the game
+     */
     private ArrayList<String> playerNames;
     /**
      * hands of each player. There are four players, thus players 1-4

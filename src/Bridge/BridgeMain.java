@@ -13,6 +13,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class BridgeMain {
+    /**
+     * driver class for the Bridge class
+     * Gets the player names from the user input scanner and runs the Bridge program with those names
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Welcome to the card game Bridge. Starting one round of Bridge!");
         //System.out.println("Please enter your players' names: ");
