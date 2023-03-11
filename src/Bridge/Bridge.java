@@ -3,7 +3,7 @@
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
  * Purpose: simulates one round of Bridge
- * Contributions: Ivy did whole Bridge Class
+ * Contributions: Ivy did whole Bridge Class, Youmin/Ken added player names
  */
 package Bridge;
 
@@ -16,9 +16,9 @@ public class Bridge {
      */
     private ArrayList<String> deck;
     /**
-     * names of the players in the game
+     * Player names (1 to 4)
      */
-    private ArrayList<String> playerNames;
+    private String[] playerNames;
     /**
      * hands of each player. There are four players, thus players 1-4
      */
@@ -35,8 +35,9 @@ public class Bridge {
     /**
      * Constructor for Bridge. Initializes an empty deck
      */
-    public Bridge(String playerNames[4]) {
+    public Bridge(String[] playerNames) {
         deck = new ArrayList<>();
+        this.playerNames = playerNames;
     }
 
     /**
@@ -46,10 +47,10 @@ public class Bridge {
         fillDeck();
         shuffleDeck();
         dealCards();
-        showPlayerHand(player1, playerName: playerNames[0]);
-        showPlayerHand(player2, "Youmax");
-        showPlayerHand(player3, "YouGod");
-        showPlayerHand(player4, "Youniverse");
+        showPlayerHand(player1,  playerNames[0]);
+        showPlayerHand(player2, playerNames[1]);
+        showPlayerHand(player3, playerNames[2]);
+        showPlayerHand(player4, playerNames[3]);
         showWinner();
     }
 
@@ -160,5 +161,4 @@ public class Bridge {
             deck.add(cards.substring(i, i + 2));
         }
     }
-
 }
