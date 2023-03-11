@@ -25,7 +25,7 @@ public class BridgeMain {
             names[i]=n.nextLine();
         }
         System.out.println(names[1]);
-        Bridge round = new Bridge();
+        Bridge round = new Bridge(names);
         round.simulateRound();
 
     }

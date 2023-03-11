@@ -15,6 +15,7 @@ public class Bridge {
      * traditional deck of cards (52 cards)
      */
     private ArrayList<String> deck;
+    private ArrayList<String> playerNames;
     /**
      * hands of each player. There are four players, thus players 1-4
      */
@@ -31,7 +32,7 @@ public class Bridge {
     /**
      * Constructor for Bridge. Initializes an empty deck
      */
-    public Bridge() {
+    public Bridge(String playerNames[4]) {
         deck = new ArrayList<>();
     }
 
@@ -42,7 +43,7 @@ public class Bridge {
         fillDeck();
         shuffleDeck();
         dealCards();
-        showPlayerHand(player1, "Youmin");
+        showPlayerHand(player1, playerName: playerNames[0]);
         showPlayerHand(player2, "Youmax");
         showPlayerHand(player3, "YouGod");
         showPlayerHand(player4, "Youniverse");
