@@ -3,11 +3,10 @@
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
  * Purpose: MacsBook business logic
- * Contributions: nyiyui
+ * Contributions: nyiyui (whole program), ivy - bye message
  */
 package MacsBook;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -74,6 +73,7 @@ public class MacsBook {
                     saveRecords();
                     break;
                 case "exit":
+                    System.out.println("youbye nya!");
                     break InputLoop;
                 case "":
                     break;
@@ -223,7 +223,7 @@ public class MacsBook {
      */
     private void createMenu() {
         System.out.println("=== Create Data");
-        System.out.println("--- Input Names");
+        System.out.println("--- Input Names for all records to add");
         System.out.println("Note: input blank line to end.");
         int init = names.size();
         for (int i = init; true; i++) {
