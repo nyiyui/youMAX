@@ -1,9 +1,13 @@
 /**
- * Names: Ivy Zhuang, Youmin Lee, Ken Shibata
+ * Names: Ayda, Alex, Ken
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
  * Purpose: MacsBook business logic
- * Contributions: nyiyui
+ * Contributions: 
+ *  - Ken:
+ *  - Ayda:  
+ *  - Alex: 
+ * for now everyone does everything and then we pick the best parts, then lie!
  */
 package MacsArrays;
 
