@@ -7,7 +7,7 @@
  *  - Ken:
  *  - Ayda:  
  *  - Alex: 
- * for now everyone does everything and then we pick the best parts, then lie!
+ * for now everyone does everything and then we pick the best parts, then say things!
  */
 package MacsArrays;
 
