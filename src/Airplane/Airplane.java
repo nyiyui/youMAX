@@ -1,3 +1,11 @@
+/**
+ * OOP 2: Airplane
+ * Course:      ICS4UP
+ * Teacher:     Ms. Krasteva
+ * Date:        2023-02-14
+ * Description: An object simulating an airplane. It can (un)load passengers, use/fill up on gas, and open/close doors.
+ * Author:      Ken Shibata
+ */
 package Airplane;
 
 import java.util.Objects;
@@ -15,47 +23,8 @@ public class Airplane {
         this.passengers = 100;
     }
 
-    public static void main(String[] args) {
-        // NOTE: run with -ea
-        Airplane youcraft = new Airplane();
-        // assert initial state
-        assert youcraft.getGasLevel() == 100;
-        assert Objects.equals(youcraft.getLandingGear(), "Down");
-        assert Objects.equals(youcraft.getDoorStatus(), "Open");
-        assert youcraft.getPassengers() == 100;
-
-        // closing door
-        youcraft.closeDoor();
-        assert Objects.equals(youcraft.getDoorStatus(), "Closed");
-        youcraft.openDoor();
-        assert Objects.equals(youcraft.getDoorStatus(), "Open");
-
-        // test landing gear
-        youcraft.doneTakeoff();
-        assert Objects.equals(youcraft.getLandingGear(), "Up");
-        youcraft.prepLanding();
-        assert Objects.equals(youcraft.getLandingGear(), "Down");
-
-        // gas level
-        youcraft.fillUp();
-        assert youcraft.getGasLevel() == 100;
-        youcraft.takeOff();
-        assert youcraft.getGasLevel() == 70;
-        youcraft.normalFlight(50);
-        assert youcraft.getGasLevel() == 20;
-        youcraft.land();
-        assert youcraft.getGasLevel() == 5;
-
-        // passengers
-        youcraft.unloadPass();
-        assert youcraft.getPassengers() == 0;
-        Airplane youcopter = new Airplane();
-        youcopter.loadPass(23);
-        assert youcopter.getPassengers() == 100 + 23;
-    }
-
     public void openDoor() {
-        if (this.doorStatus == "Open")
+        if (Objects.equals(this.doorStatus, "Open"))
             System.out.println("door: kept open");
         else
             System.out.println("door: opened");
@@ -63,7 +32,7 @@ public class Airplane {
     }
 
     public void closeDoor() {
-        if (this.doorStatus == "Close")
+        if (Objects.equals(this.doorStatus, "Close"))
             System.out.println("door: kept close");
         else
             System.out.println("door: closed");
