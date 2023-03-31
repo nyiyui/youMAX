@@ -2,7 +2,7 @@
  * Names: Ayda, Alex, Ken
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
- * Purpose: MacsBook business logic
+ * Purpose: MacsArrays business logic
  * Contributions: 
  *  - Ken:
  *  - Ayda:  
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MacsBook {
+public class MacsArrays {
     /**
      * List of student names.
      */
@@ -33,7 +33,7 @@ public class MacsBook {
     private ArrayList<Double> sMarks = new ArrayList<>();
     private Scanner s;
 
-    MacsBook() {
+    MacsArrays() {
         s = new Scanner(System.in);
     }
 
@@ -43,8 +43,7 @@ public class MacsBook {
     void menu() {
         System.out.println("Menu!");
         showHelp();
-        InputLoop:
-        while (true) {
+        InputLoop: while (true) {
             System.out.print("> ");
             String line = s.nextLine().toLowerCase();
             boolean displayAll = false;
@@ -97,6 +96,7 @@ public class MacsBook {
 
     /**
      * Menu for choosing a student
+     * 
      * @param displayAll display all student records?
      */
     private void marksMenu(boolean displayAll) {
@@ -111,7 +111,8 @@ public class MacsBook {
                 }
                 ArrayList<Integer> matches = new ArrayList<>();
                 for (int i = 0; i < names.size(); i++)
-                    if (names.get(i).equals(line)) matches.add(i);
+                    if (names.get(i).equals(line))
+                        matches.add(i);
                 if (matches.size() == 0) {
                     System.out.println("--- name not found in records");
                     continue;
@@ -143,12 +144,13 @@ public class MacsBook {
             for (int i = 0; i < names.size(); i++) {
                 printRecord(i);
             }
-            System.out.printf("Class Average: %.3f\n",classAverage());
+            System.out.printf("Class Average: %.3f\n", classAverage());
         }
     }
 
     /**
      * Print records for a single student
+     * 
      * @param i student index
      */
     private void printRecord(int i) {
@@ -212,7 +214,8 @@ public class MacsBook {
         for (int i = init; true; i++) {
             System.out.printf("%d\tname> ", i);
             String line = s.nextLine();
-            if (line.length() == 0) break;
+            if (line.length() == 0)
+                break;
             names.add(line.trim());
         }
         System.out.println("--- Input Numbers");
@@ -239,7 +242,7 @@ public class MacsBook {
         System.out.print("Filepath to save to: ");
         try {
             try (FileWriter w = new FileWriter(s.nextLine())) {
-                w.write("MacsBook-format-v1\n");
+                w.write("MacsArrays-format-v1\n");
                 for (String name : names) {
                     w.write(escape(name));
                     w.write("\t");
@@ -267,7 +270,7 @@ public class MacsBook {
         try {
             try (FileReader fr = new FileReader(s.nextLine())) {
                 Scanner s = new Scanner(fr);
-                if (!s.nextLine().equals("MacsBook-format-v1")) {
+                if (!s.nextLine().equals("MacsArrays-format-v1")) {
                     System.out.println("--- unknown file version/format");
                     return;
                 }
@@ -276,7 +279,7 @@ public class MacsBook {
                 for (String nameRaw : raw) {
                     names.add(unescape(nameRaw));
                 }
-                 raw = s.nextLine().split("\\t");
+                raw = s.nextLine().split("\\t");
                 for (String numberRaw : raw) {
                     numbers.add(Integer.parseInt(numberRaw));
                 }
@@ -295,8 +298,67 @@ public class MacsBook {
 
             }
         } catch (IOException e) {
+
             System.out.printf("--- load error: %s\n", e.getLocalizedMessage());
         }
+    }
+
+    /**
+     * Sorts the two arrays of names and marks by student name
+     */
+    private void sortByAlpha() {
+        int passes = 0;
+        while(passes < names.size()){
+            while(passes < names.size()){
+                String endName = names.get(0)
+                for (int i = 1; i < names.size() - passes; i++){
+                    if (endName.compareTo(names.get(i)) < 0){
+                        endName = names.get(i);
+                    }
+                }
+                selectandSwap(names.indexOf(endName), passes);
+                passes++;
+            }
+        }
+    }
+    /**
+     * Sorts the two arrays of names and marks by grade. Reverse changes the order in which it is sorted.
+     * @param reverse the order of the array
+     */
+    private void sortByNumber(boolean reverse) {
+        int passes = 0;
+        while (passes < numbers.size()) {
+            if (!reverse) {
+                int largest = numbers.get(0);
+                for (int i = 1; i < numbers.size() - passes; i++) {
+                    if (largest < numbers.get(i)) {
+                        largest = numbers.get(i);
+                    }
+                }
+                selectandSwap(numbers.indexOf(largest), passes);
+            }
+            else{
+                int smallest = numbers.get(0);
+                for (int i = 1; i < numbers.size() - passes; i++) {
+                    if (smallest < numbers.get(i)) {
+                        smallest = numbers.get(i);
+                    }
+                }
+                selectandSwap(numbers.indexOf(smallest), passes);
+            }
+            passes++;
+        }
+    }
+    /**
+     * Helper method which is used to move the element to the correct position
+     */
+    private void selectandSwap(int index, int passes) {
+        String tempName = names.get(index);
+        double tempMark = sMarks.get(index);
+        names.remove(index);
+        sMarks.remove(index);
+        names.add(names.size() - 1 - passes, tempName);
+        sMarks.add(sMarks.size() - 1 - passes, tempMark);
     }
 
     /**
