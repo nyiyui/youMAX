@@ -1,15 +1,19 @@
 /**
- * Names: Ivy Zhuang, Youmin Lee, Ken Shibata
+ * Names: Ayda, Alex, Ken
  * Teacher: Ms. Krasteva
- * Date: March 8, 2023
- * Purpose: MacsBook driver class
- * Contributions: nyiyui
+ * Date: April 1, 2023
+ * Purpose: Driver class for sorting assignment
+ * Contributions: 
+ *  - Ken:   ?
+ *  - Ayda: updated file structure and user clarity in print statements 
+ *  - Alex: sorting numerical and alphabetical 
+ * for now everyone does everything and then we pick the best parts, then say things!
  */
-package MacsArrays;
+package MacsSorting;
 
-public class MacsBookMain {
+public class MacsSortingMain {
     public static void main(String[] args) {
-        MacsBook book = new MacsBook();
+        MacsSorting book = new MacsSorting();
         book.menu();
     }
 }
