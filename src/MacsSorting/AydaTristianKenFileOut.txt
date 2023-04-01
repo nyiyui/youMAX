@@ -48,3 +48,4 @@ Amelia        87.00
 Omar          60.00
 Haley         69.00
 Latasha       67.00
+Ayda          100.00
