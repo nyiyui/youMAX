@@ -372,22 +372,22 @@ public class MacsArrays {
             MultiWriter sink = new MultiWriter(w, new OutputStreamWriter(System.out));
             new PrintWriter(System.out).write("test");
             System.out.println("Printed data:");
-            int nameNumberStringMax = 18;
+            int nameNumberStringMax = 24;
             int markStringMax = 4;
             for (int i = 0; i < names.size(); i++) {
                 String number = String.format("%d", numbers.get(i));
                 String name = names.get(i);
                 String mark = String.format("%.2f", sMarks.get(i));
-                nameNumberStringMax = Integer.max(nameNumberStringMax, name.length() + 2 + number.length() + 1);
+                nameNumberStringMax = Integer.max(nameNumberStringMax, name.length() + 2 + number.length() + 1+4);
                 markStringMax = Integer.max(markStringMax, mark.length());
             }
             int[] lengths = {nameNumberStringMax, markStringMax};
-            sink.write(formatRow(lengths, new String[]{"Name (and Number)", "Mark",}) + "\n");
+            sink.write(formatRow(lengths, new String[]{"Name (and Number)    ", "Mark",}) + "\n");
             for (int i = 0; i < names.size(); i++) {
                 String number = Integer.toString(numbers.get(i));
                 String name = names.get(i);
                 String mark = Double.toString(sMarks.get(i));
-                sink.write(formatRow(lengths, new String[]{String.format("%s (%s)", name, number), mark,}) + "\n");
+                sink.write(formatRow(lengths, new String[]{String.format("%s (%s)    ", name, number), mark,}) + "\n");
             }
         } catch (Exception e) {
             System.out.printf("--- print error: %s\n", e.getLocalizedMessage());
