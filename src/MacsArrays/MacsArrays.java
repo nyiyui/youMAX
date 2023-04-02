@@ -150,26 +150,34 @@ public class MacsArrays {
 
     private void editMenu() {
         int chosenI = chooseStudent("to edit");
+        if (chosenI == -1) return;
         printRecord(chosenI);
         System.out.println("Note: enter blank line to keep existing value.");
-        System.out.print("name>");
+        System.out.print("new name>");
         String newName = s.nextLine().trim();
+        if (newName.length()!=0)
+        names.set(chosenI, newName);
         int newNumber;
         do {
-            System.out.print("number>");
+            System.out.print("new number>");
             try {
-                newNumber = Integer.parseInt(s.nextLine().trim());
+                String raw=    s.nextLine().trim();
+                if (raw.length() == 0) break;
+                newNumber = Integer.parseInt(raw);
             } catch (NumberFormatException e) {
                 System.out.println("invalid number " + e.getLocalizedMessage());
                 continue;
             }
+        numbers.set(chosenI, newNumber);
             break;
         } while (true);
         double newMark;
         do {
-            System.out.print("mark>");
+            System.out.print("new mark>");
             try {
-                newMark = Double.parseDouble(s.nextLine().trim());
+                String raw=    s.nextLine().trim();
+                if (raw.length() == 0) break;
+                newMark = Double.parseDouble(raw);
             } catch (NumberFormatException e) {
                 System.out.println("invalid number " + e.getLocalizedMessage());
                 continue;
@@ -178,11 +186,9 @@ public class MacsArrays {
                 System.out.println("invalid number (enter 0 to 100 inclusive)");
                 continue;
             }
+        sMarks.set(chosenI, newMark);
             break;
         } while (true);
-        numbers.set(chosenI, newNumber);
-        names.set(chosenI, newName);
-        sMarks.set(chosenI, newMark);
         System.out.println("--- New (updated) records");
         printRecord(chosenI);
     }
