@@ -143,6 +143,8 @@ public class MacsArrays {
         int chosenI = chooseStudent("to edit");
         printRecord(chosenI);
         System.out.println("Note: enter blank line to keep existing value.");
+        System.out.print("name>");
+        String newName = s.nextLine().trim();
         int newNumber;
         do {
             System.out.print("number>");
@@ -154,8 +156,6 @@ public class MacsArrays {
             }
             break;
         } while (true);
-        System.out.print("name>");
-        String newName = s.nextLine().trim();
         double newMark;
         do {
             System.out.print("mark>");
@@ -163,6 +163,10 @@ public class MacsArrays {
                 newMark = Double.parseDouble(s.nextLine().trim());
             } catch (NumberFormatException e) {
                 System.out.println("invalid number " + e.getLocalizedMessage());
+                continue;
+            }
+            if (newMark<0 || newMark>100) {
+                System.out.println("invalid number (enter 0 to 100 inclusive)");
                 continue;
             }
             break;
