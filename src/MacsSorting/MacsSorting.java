@@ -13,8 +13,11 @@
  */
 package MacsSorting;
 
-import java.io.*; 
-import java.util.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class MacsSorting {
@@ -328,9 +331,7 @@ public class MacsSorting {
     }
 
    private void saveToOut() {
-      try 
-         (FileWriter wo = new FileWriter(OUT_PATH)) {
-         
+      try (FileWriter wo = new FileWriter(OUT_PATH)) {
          /* stores the index of the longest name so that padding can be adjusted accordingly when printed to console and file */
          int longName = 0; 
          for(int i = 0; i<names.size(); i++){
