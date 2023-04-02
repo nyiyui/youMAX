@@ -2,7 +2,9 @@
  * Names: Ayda, Alex, Ken
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
- * Purpose: MacsArrays business logic
+ * Purpose: To create a program that will sort a class's students by their marks numerically from highest to lowest or to sort them
+ * alphabetically. Two files are used, one that stores sorted/formated data, and one that stores the raw data the user enters.
+ * for ease of use/testing a file has been provided that contains 50 premade students, if you wish to discard this data, clear the file named .macsarrays-autosave.
  * Contributions:
  * - Ken:  mark editing, autosave, and general code cleanup
  * - Ayda: printing records
@@ -14,95 +16,102 @@ import java.io.*;
 import java.util.*;
 
 public class MacsArrays {
-    private static final String[] GREETINGS = {"Hello!", "nya~", "I'm sorry for this being late."};
-    /**
-     * Path to autosave to.
-     */
-    private static final String AUTOSAVE_PATH = ".macsarrays-autosave";
-    /**
-     * List of student names.
-     */
-    private ArrayList<String> names;
-    /**
-     * List of student numbers.
-     */
-    private ArrayList<Integer> numbers;
-    /**
-     * List of student marks.
-     */
-    private ArrayList<Double> sMarks;
-    private Scanner s;
+   private static final String[] GREETINGS = {"Hello!", "nya~", "I'm sorry for this being late.", "Ohamoni~"};
+   /**
+    * Path to autosave to.
+    */
+   private static final String AUTOSAVE_PATH = ".macsarrays-autosave";
+   /**
+    * List of student names.
+    */
+   private ArrayList<String> names;
+   /**
+    * List of student numbers.
+    */
+   private ArrayList<Integer> numbers;
+   /**
+    * List of student marks.
+    */
+   private ArrayList<Double> sMarks;
+   private Scanner s;
 
-    MacsArrays() {
-        s = new Scanner(System.in);
-        names = new ArrayList<>();
-        numbers = new ArrayList<>();
-        sMarks = new ArrayList<>();
-    }
+   MacsArrays() {
+      s = new Scanner(System.in);
+      names = new ArrayList<>();
+      numbers = new ArrayList<>();
+      sMarks = new ArrayList<>();
+   }
 
-    /**
-     * Formats a single row of table-oriented data. Pads to the required lengths.
-     *
-     * @param lengths width of each value's cell. Length of lengths must be equal to length of values.
-     * @param values  values for each column/cell. Length of values must be equal to length of lengths.
-     * @return formatted row without a newline
-     */
-    private static String formatRow(int[] lengths, String[] values) {
-        if (lengths.length != values.length) throw new RuntimeException("lengths must be equal in lengths to values");
-        String[] elements = new String[lengths.length];
-        for (int i = 0; i < lengths.length; i++)
-            elements[i] = new String(new char[lengths[i]]).replaceAll("\0", " ").substring(values[i].length()) + values[i];
-        return String.join(" ", elements);
-    }
+   /**
+    * Formats a single row of table-oriented data. Pads to the required lengths.
+    *
+    * @param lengths width of each value's cell. Length of lengths must be equal to length of values.
+    * @param values  values for each column/cell. Length of values must be equal to length of lengths.
+    * @return formatted row without a newline
+    */
+   private static String formatRow(int[] lengths, String[] values) {
+      if (lengths.length != values.length) throw new RuntimeException("lengths must be equal in lengths to values");
+      String[] elements = new String[lengths.length];
+      for (int i = 0; i < lengths.length; i++)
+         elements[i] = new String(new char[lengths[i]]).replaceAll("\0", " ").substring(values[i].length()) + values[i];
+      return String.join(" ", elements);
+   }
 
-    /**
-     * Shows a help menu with available commands.
-     */
-    private static void showHelp() {
-        System.out.println("--- Available options:");
-        System.out.println("Options");
-        System.out.println("  help   - show options");
-        System.out.println("  create - append marks");
-        System.out.println("  edit   - edit a single student's records");
-        System.out.println("  sort-a - sort alphabetically (A-Z) and show");
-        System.out.println("  sort-m - sort by descending mark and show");
-        System.out.println("  all    - view all student names, numbers, marks, and averages");
-        System.out.println("  single - view single student info");
-        System.out.println("  load   - load and append data to current records");
-        System.out.println("  save   - save records to file");
-        System.out.println("  print  - save records in a columned format");
-        System.out.println("  exit   - exit application");
-    }
+   /**
+    * Shows a help menu with available commands.
+    */
+   private static void showHelp() {
+      System.out.println("--- Available options:");
+      System.out.println("Options");
+      System.out.println("  help   - show options");
+      System.out.println("  clear  - clear marks (but do not autosave)");
+      System.out.println("  create - append marks");
+      System.out.println("  edit   - edit a single student's records");
+      System.out.println("  sort-a - sort alphabetically (A-Z) and show");
+      System.out.println("  sort-m - sort by descending mark and show");
+      System.out.println("  all    - view all student names, numbers, marks, and averages");
+      System.out.println("  single - view single student info");
+      System.out.println("  load   - load and append data to current records");
+      System.out.println("  save   - save records to file");
+      System.out.println("  print  - save records in a columned format");
+      System.out.println("  exit   - exit application");
+   }
 
-    /**
-     * Main menu. Dispatches to other menu methods.
-     */
-    void menu() {
-        System.out.println(GREETINGS[new Random().nextInt(GREETINGS.length)]);
-        showHelp();
-        loadAutosave();
-        InputLoop:
-        while (true) {
-            System.out.print("> ");
-            String line = s.nextLine().toLowerCase();
-            boolean displayAll = false;
-            switch (line) {
-                case "help":
-                    showHelp();
-                    break;
-                case "halp":
-                    System.out.println("You need help? Type \"help\"!");
-                    break;
-                case "create":
-                    createMenu();
-                    saveAutosave();
-                    break;
-                case "edit":
-                    editMenu();
-                    saveAutosave();
-                    break;
-                case "sort-a":
-                    sortByAlpha();
+   /**
+    * Main menu. Dispatches to other menu methods.
+    */
+   void menu() {
+      System.out.println(GREETINGS[new Random().nextInt(GREETINGS.length)]);
+      showHelp();
+      loadAutosave();
+      InputLoop:
+      while (true) {
+         System.out.print("> ");
+         String line = s.nextLine().toLowerCase();
+         boolean displayAll = false;
+         switch (line) {
+            case "help":
+               showHelp();
+               break;
+            case "halp":
+               System.out.println("You need help? Type \"help\"!");
+               break;
+            case "clear":
+               names.clear();
+               numbers.clear();
+               sMarks.clear();
+               System.out.println("Marks cleared. (Not autosaved. Type `autosave` to autosave.)");
+               break ;
+            case "create":
+               createMenu();
+               saveAutosave();
+               break;
+            case "edit":
+               editMenu();
+               saveAutosave();
+               break;
+            case "sort-a":
+               sortByAlpha();
                     saveAutosave();
                     break;
                 case "sort-m":
