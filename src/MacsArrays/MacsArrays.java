@@ -3,70 +3,130 @@
  * Teacher: Ms. Krasteva
  * Date: March 8, 2023
  * Purpose: MacsArrays business logic
- * Contributions: 
- *  - Ken:
- *  - Ayda:  
- *  - Alex: 
- * for now everyone does everything and then we pick the best parts, then say things!
+ * Contributions:
+ * - Ken:  mark editing, autosave, and general code cleanup
+ * - Ayda: printing records
+ * - Alex: sorting
  */
 package MacsArrays;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class MacsArrays {
+    private static final String[] GREETINGS = {"Hello!", "nya~", "I'm sorry for this being late."};
+    /**
+     * Path to autosave to.
+     */
+    private static final String AUTOSAVE_PATH = ".macsarrays-autosave";
     /**
      * List of student names.
      */
-    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<String> names;
     /**
      * List of student numbers.
      */
-    private ArrayList<Integer> numbers = new ArrayList<>();
+    private ArrayList<Integer> numbers;
     /**
      * List of student marks.
      */
-    private ArrayList<Double> sMarks = new ArrayList<>();
+    private ArrayList<Double> sMarks;
     private Scanner s;
 
     MacsArrays() {
         s = new Scanner(System.in);
+        names = new ArrayList<>();
+        numbers = new ArrayList<>();
+        sMarks = new ArrayList<>();
+    }
+
+    /**
+     * Formats a single row of table-oriented data. Pads to the required lengths.
+     *
+     * @param lengths width of each value's cell. Length of lengths must be equal to length of values.
+     * @param values  values for each column/cell. Length of values must be equal to length of lengths.
+     * @return formatted row without a newline
+     */
+    private static String formatRow(int[] lengths, String[] values) {
+        if (lengths.length != values.length) throw new RuntimeException("lengths must be equal in lengths to values");
+        String[] elements = new String[lengths.length];
+        for (int i = 0; i < lengths.length; i++)
+            elements[i] = new String(new char[lengths[i]]).replaceAll("\0", " ").substring(values[i].length()) + values[i];
+        return String.join(" ", elements);
+    }
+
+    /**
+     * Shows a help menu with available commands.
+     */
+    private static void showHelp() {
+        System.out.println("--- Available options:");
+        System.out.println("Options");
+        System.out.println("  help   - show options");
+        System.out.println("  create - append marks");
+        System.out.println("  edit   - edit a single student's records");
+        System.out.println("  sort-a - sort alphabetically (A-Z) and show");
+        System.out.println("  sort-m - sort by descending mark and show");
+        System.out.println("  all    - view all student names, numbers, marks, and averages");
+        System.out.println("  single - view single student info");
+        System.out.println("  load   - load and append data to current records");
+        System.out.println("  save   - save records to file");
+        System.out.println("  print  - save records in a columned format");
+        System.out.println("  exit   - exit application");
     }
 
     /**
      * Main menu. Dispatches to other menu methods.
      */
     void menu() {
-        System.out.println("Menu!");
+        System.out.println(GREETINGS[new Random().nextInt(GREETINGS.length)]);
         showHelp();
-        InputLoop: while (true) {
+        loadAutosave();
+        InputLoop:
+        while (true) {
             System.out.print("> ");
             String line = s.nextLine().toLowerCase();
             boolean displayAll = false;
             switch (line) {
-                case "create":
-                    createMenu();
-                    break;
                 case "help":
                     showHelp();
                     break;
                 case "halp":
                     System.out.println("You need help? Type \"help\"!");
                     break;
+                case "create":
+                    createMenu();
+                    saveAutosave();
+                    break;
+                case "edit":
+                    editMenu();
+                    saveAutosave();
+                    break;
+                case "sort-a":
+                    sortByAlpha();
+                    saveAutosave();
+                    break;
+                case "sort-m":
+                    sortByMark(false);
+                    saveAutosave();
+                    break;
                 case "all":
                     displayAll = true;
                 case "single":
                     marksMenu(displayAll);
                     break;
+                case "autosave":
+                    saveAutosave();
+                    break;
+                case "load-autosave":
+                    loadAutosave();
                 case "load":
-                    loadRecords();
+                    loadRecordsMenu();
                     break;
                 case "save":
-                    saveRecords();
+                    saveRecordsMenu();
+                    break;
+                case "print":
+                    printRecords();
                     break;
                 case "exit":
                     break InputLoop;
@@ -79,70 +139,113 @@ public class MacsArrays {
         }
     }
 
-    /**
-     * Shows a help menu with available commands.
-     */
-    private static void showHelp() {
-        System.out.println("--- Available options:");
-        System.out.println("Options");
-        System.out.println("  help - show options");
-        System.out.println("  create - append marks");
-        System.out.println("  all - view all student names, numbers, marks, and averages");
-        System.out.println("  single - view single student info");
-        System.out.println("  load - load and append data to current records");
-        System.out.println("  save - dump records to file");
-        System.out.println("  exit - exit application");
+    private void editMenu() {
+        int chosenI = chooseStudent("to edit");
+        printRecord(chosenI);
+        System.out.println("Note: enter blank line to keep existing value.");
+        int newNumber;
+        do {
+            System.out.print("number>");
+            try {
+                newNumber = Integer.parseInt(s.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("invalid number " + e.getLocalizedMessage());
+                continue;
+            }
+            break;
+        } while (true);
+        System.out.print("name>");
+        String newName = s.nextLine().trim();
+        double newMark;
+        do {
+            System.out.print("mark>");
+            try {
+                newMark = Double.parseDouble(s.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("invalid number " + e.getLocalizedMessage());
+                continue;
+            }
+            break;
+        } while (true);
+        numbers.set(chosenI, newNumber);
+        names.set(chosenI, newName);
+        sMarks.set(chosenI, newMark);
+        System.out.println("--- New (updated) records");
+        printRecord(chosenI);
     }
+
+    private int chooseStudent(String intent) {
+        while (true) {
+            System.out.println("--- Choose Student " + intent);
+            System.out.println("Note: input blank line to exit prematurely.");
+            System.out.print("name> ");
+            String line = s.nextLine().trim();
+            if (line.length() == 0) {
+                break;
+            }
+            ArrayList<Integer> matches = new ArrayList<>();
+            for (int i = 0; i < names.size(); i++)
+                if (names.get(i).equals(line)) matches.add(i);
+            if (matches.size() == 0) {
+                System.out.println("name not found in records");
+                continue;
+            }
+            int chosenI;
+            if (matches.size() == 1) {
+                chosenI = matches.get(0);
+            } else {
+                while (true) {
+                    System.out.println("--- Multiple students with name found.");
+                    for (int i : matches) {
+                        printRecordShort(i);
+                    }
+                    System.out.println("--- Input student index:");
+                    System.out.print("> ");
+                    chosenI = s.nextInt();
+                    if (chosenI < 0 || chosenI >= names.size()) {
+                        System.out.println("--- invalid student index given");
+                        continue;
+                    }
+                    break;
+                }
+            }
+            return chosenI;
+        }
+        return -1;
+    }
+
 
     /**
      * Menu for choosing a student
-     * 
+     *
      * @param displayAll display all student records?
      */
     private void marksMenu(boolean displayAll) {
         if (!displayAll) {
-            while (true) {
-                System.out.println("--- Choose Student");
-                System.out.println("Note: input blank line to exit prematurely.");
-                System.out.print("name> ");
-                String line = s.nextLine().trim();
-                if (line.length() == 0) {
-                    break;
-                }
-                ArrayList<Integer> matches = new ArrayList<>();
-                for (int i = 0; i < names.size(); i++)
-                    if (names.get(i).equals(line))
-                        matches.add(i);
-                if (matches.size() == 0) {
-                    System.out.println("--- name not found in records");
-                    continue;
-                }
-                int chosenI;
-                if (matches.size() == 1) {
-                    chosenI = matches.get(0);
-                } else {
-                    while (true) {
-                        System.out.println("--- Multiple students with name found.");
-                        for (int i : matches) {
-                            printRecordShort(i);
-                        }
-                        System.out.println("--- Input student index:");
-                        System.out.print("> ");
-                        chosenI = s.nextInt();
-                        if (chosenI < 0 || chosenI >= names.size()) {
-                            System.out.println("--- invalid student index given");
-                            continue;
-                        }
-                        break;
-                    }
-                }
-                printRecord(chosenI);
-                break;
-            }
+            int chosenI = chooseStudent("to show info");
+            printRecord(chosenI);
         } else {
             System.out.printf("Printing %d records:\n", names.size());
+            int indexStringMax = Integer.max(5, (int) Math.log10(names.size()));
+            int numberStringMax = 6;
+            int nameStringMax = 4;
+            int markStringMax = 4;
             for (int i = 0; i < names.size(); i++) {
-                printRecord(i);
+                String number = String.format("%d", numbers.get(i));
+                String name = names.get(i);
+                String mark = String.format("%.2f", sMarks.get(i));
+                numberStringMax = Integer.max(numberStringMax, number.length());
+                nameStringMax = Integer.max(nameStringMax, name.length());
+                markStringMax = Integer.max(markStringMax, mark.length());
+            }
+            int[] lengths = {indexStringMax, numberStringMax, nameStringMax, markStringMax};
+            System.out.println(formatRow(lengths, new String[]{"Index", "Number", "Name", "Mark",}));
+            for (int i = 0; i < names.size(); i++) {
+                String index = Integer.toString(i);
+                String number = Integer.toString(numbers.get(i));
+                String name = names.get(i);
+                String mark = Double.toString(sMarks.get(i));
+                System.out.println(formatRow(lengths, new String[]{index, number, name, mark,}));
             }
             System.out.printf("Class Average: %.3f\n", classAverage());
         }
@@ -150,7 +253,7 @@ public class MacsArrays {
 
     /**
      * Print records for a single student
-     * 
+     *
      * @param i student index
      */
     private void printRecord(int i) {
@@ -177,7 +280,7 @@ public class MacsArrays {
     private double classAverage() {
         double sum = 0.0;
         for (int i = 0; i < names.size(); i++) {
-            sum += studentAverage(i);
+            sum += sMarks.get(i);
         }
         return sum / (double) names.size();
     }
@@ -229,76 +332,136 @@ public class MacsArrays {
                 i--;
             }
         }
-        getMarks("Student Marks", "M", aMarks, init);
-        System.out.println("--- Student Averages");
-        for (int i = 0; i < names.size(); i++) {
-            System.out.printf("%d average for %s: %.2f\n", i, names.get(i), studentAverage(i));
-        }
-        System.out.printf("class average: %.2f\n", classAverage());
+        getMarks("Student Marks", "M", sMarks, init);
+        System.out.printf("Class average: %.2f\n", classAverage());
     }
 
-    private void saveRecords() {
+    private void saveRecords(String path) throws IOException {
+        try (FileWriter w = new FileWriter(path)) {
+            w.write("MacsArrays-format-v1\n");
+            for (String name : names) {
+                w.write(escape(name));
+                w.write("\t");
+            }
+            w.write("\n");
+            for (int number : numbers) {
+                w.write(String.format("%d", number));
+                w.write("\t");
+            }
+            w.write("\n");
+            for (double mark : sMarks) {
+                w.write(String.format("%.2f", mark));
+                w.write("\t");
+            }
+            w.write("\n");
+        }
+    }
+
+    /**
+     * Save records in a human-readable format (also ask user for path to save to).
+     * This only saves the name and marks.
+     */
+    private void printRecords() {
+        System.out.println("=== Print Records");
+        System.out.print("Filepath to print to: ");
+        try (FileWriter w = new FileWriter(s.nextLine())) {
+            // we're only dealing with English with UTF-8...I hope
+            // Ah yes non-English languages totally do not exist, so we don't have to care about them hehehe
+            // Also noone uses non-UTF-8...Right? Mmmmmhmmmmmm indeed.
+            // Ms. Krasteva please don't kill me I don't do this in MCPT code.
+            MultiWriter sink = new MultiWriter(w, new OutputStreamWriter(System.out));
+            new PrintWriter(System.out).write("test");
+            System.out.println("Printed data:");
+            int nameNumberStringMax = 18;
+            int markStringMax = 4;
+            for (int i = 0; i < names.size(); i++) {
+                String number = String.format("%d", numbers.get(i));
+                String name = names.get(i);
+                String mark = String.format("%.2f", sMarks.get(i));
+                nameNumberStringMax = Integer.max(nameNumberStringMax, name.length() + 2 + number.length() + 1);
+                markStringMax = Integer.max(markStringMax, mark.length());
+            }
+            int[] lengths = {nameNumberStringMax, markStringMax};
+            sink.write(formatRow(lengths, new String[]{"Name (and Number)", "Mark",}) + "\n");
+            for (int i = 0; i < names.size(); i++) {
+                String number = Integer.toString(numbers.get(i));
+                String name = names.get(i);
+                String mark = Double.toString(sMarks.get(i));
+                sink.write(formatRow(lengths, new String[]{String.format("%s (%s)", name, number), mark,}) + "\n");
+            }
+        } catch (Exception e) {
+            System.out.printf("--- print error: %s\n", e.getLocalizedMessage());
+        }
+    }
+
+    private void saveAutosave() {
+        try {
+            saveRecords(AUTOSAVE_PATH);
+            System.out.println("--- autosaved.");
+        } catch (IOException e) {
+            System.out.printf("--- autosave failed (%s). Type `autosave` to try again\n", e.getLocalizedMessage());
+        }
+    }
+
+    private void saveRecordsMenu() {
         System.out.println("=== Save Records");
         System.out.print("Filepath to save to: ");
         try {
-            try (FileWriter w = new FileWriter(s.nextLine())) {
-                w.write("MacsArrays-format-v1\n");
-                for (String name : names) {
-                    w.write(escape(name));
-                    w.write("\t");
-                }
-                w.write("\n");
-                for (int number : numbers) {
-                    w.write(String.format("%d", number));
-                    w.write("\t");
-                }
-                w.write("\n");
-                for (double mark : sMarks) {
-                    w.write(String.format("%.2f", mark));
-                    w.write("\t");
-                }
-                w.write("\n");
-            }
+            saveRecords(s.nextLine());
         } catch (Exception e) {
             System.out.printf("--- save error: %s\n", e.getLocalizedMessage());
         }
     }
 
-    private void loadRecords() {
+    private void loadAutosave() {
+        try {
+            loadRecords(AUTOSAVE_PATH);
+        } catch (FileNotFoundException e) {
+            System.out.println("--- no autosave found");
+        } catch (IOException e) {
+            System.out.printf("--- failed to load autosave (%s)\n", e.getLocalizedMessage());
+        }
+        System.out.printf("--- loaded %d records from autosave.\n", names.size());
+    }
+
+
+    private void loadRecords(String path) throws IOException {
+        try (FileReader fr = new FileReader(path)) {
+            Scanner s = new Scanner(fr);
+            if (!s.nextLine().equals("MacsArrays-format-v1")) {
+                System.out.println("--- unknown file version/format");
+                return;
+            }
+            s.useDelimiter("[\\t\\n]");
+            String[] raw = s.nextLine().split("\\t");
+            for (String nameRaw : raw) {
+                names.add(unescape(nameRaw));
+            }
+            raw = s.nextLine().split("\\t");
+            for (String numberRaw : raw) {
+                numbers.add(Integer.parseInt(numberRaw));
+            }
+            if (numbers.size() != names.size()) {
+                System.out.println("--- file has corrupt data: numbers length not equal to names length");
+                return;
+            }
+            raw = s.nextLine().split("\\t");
+            for (String markRaw : raw) {
+                sMarks.add(Double.parseDouble(markRaw));
+            }
+            if (sMarks.size() != names.size()) {
+                System.out.println("--- file has corrupt data: assignment marks length not equal to names length");
+                return;
+            }
+        }
+    }
+
+    private void loadRecordsMenu() {
         System.out.println("=== Load and Append Records");
         System.out.print("Filepath to load from: ");
         try {
-            try (FileReader fr = new FileReader(s.nextLine())) {
-                Scanner s = new Scanner(fr);
-                if (!s.nextLine().equals("MacsArrays-format-v1")) {
-                    System.out.println("--- unknown file version/format");
-                    return;
-                }
-                s.useDelimiter("[\\t\\n]");
-                String[] raw = s.nextLine().split("\\t");
-                for (String nameRaw : raw) {
-                    names.add(unescape(nameRaw));
-                }
-                raw = s.nextLine().split("\\t");
-                for (String numberRaw : raw) {
-                    numbers.add(Integer.parseInt(numberRaw));
-                }
-                if (numbers.size() != names.size()) {
-                    System.out.println("--- file has corrupt data: numbers length not equal to names length");
-                    return;
-                }
-                raw = s.nextLine().split("\\t");
-                for (String markRaw : raw) {
-                    sMarks.add(Double.parseDouble(markRaw));
-                }
-                if (sMarks.size() != names.size()) {
-                    System.out.println("--- file has corrupt data: assignment marks length not equal to names length");
-                    return;
-                }
-
-            }
+            loadRecords(s.nextLine());
         } catch (IOException e) {
-
             System.out.printf("--- load error: %s\n", e.getLocalizedMessage());
         }
     }
@@ -307,48 +470,24 @@ public class MacsArrays {
      * Sorts the two arrays of names and marks by student name
      */
     private void sortByAlpha() {
-        int passes = 0;
-        while(passes < names.size()){
-            while(passes < names.size()){
-                String endName = names.get(0)
-                for (int i = 1; i < names.size() - passes; i++){
-                    if (endName.compareTo(names.get(i)) < 0){
-                        endName = names.get(i);
-                    }
-                }
-                selectandSwap(names.indexOf(endName), passes);
-                passes++;
-            }
-        }
+        new Sorter<String, Double, Integer>().insertionSort(Comparator.naturalOrder(), 0, names.size(), names, sMarks, numbers);
     }
+
     /**
      * Sorts the two arrays of names and marks by grade. Reverse changes the order in which it is sorted.
-     * @param reverse the order of the array
+     *
+     * @param ascending whether array is sorted ascending
      */
-    private void sortByNumber(boolean reverse) {
-        int passes = 0;
-        while (passes < numbers.size()) {
-            if (!reverse) {
-                int largest = numbers.get(0);
-                for (int i = 1; i < numbers.size() - passes; i++) {
-                    if (largest < numbers.get(i)) {
-                        largest = numbers.get(i);
-                    }
-                }
-                selectandSwap(numbers.indexOf(largest), passes);
-            }
-            else{
-                int smallest = numbers.get(0);
-                for (int i = 1; i < numbers.size() - passes; i++) {
-                    if (smallest < numbers.get(i)) {
-                        smallest = numbers.get(i);
-                    }
-                }
-                selectandSwap(numbers.indexOf(smallest), passes);
-            }
-            passes++;
+    private void sortByMark(boolean ascending) {
+        Comparator<Double> c;
+        if (ascending) {
+            c = Comparator.naturalOrder();
+        } else {
+            c = Collections.reverseOrder();
         }
+        new Sorter<Double, String, Integer>().insertionSort(c, 0, names.size(), sMarks, names, numbers);
     }
+
     /**
      * Helper method which is used to move the element to the correct position
      */
@@ -379,5 +518,70 @@ public class MacsArrays {
      */
     private static String unescape(String s) {
         return s.replaceAll("\\\\t", "\t").replaceAll("\\\\\\\\", "\\");
+    }
+}
+
+/**
+ * Do synchronised operations on multiple Writers.
+ * Idea is from <a href="https://pkg.go.dev/io#MultiWriter">Go's io.MultiWriter</a>
+ */
+class MultiWriter extends Writer {
+    private final Writer[] sinks;
+
+    /**
+     * Make a new writer with multiple sinks. Zero sinks act as a null device.
+     *
+     * @param sinks Writers to write in, in the order they will be written to.
+     */
+    MultiWriter(Writer... sinks) {
+        this.sinks = sinks;
+    }
+
+    @Override
+    public void write(char[] cbuf, int off, int len) throws IOException {
+        for (Writer s : sinks)
+            s.write(cbuf, off, len);
+    }
+
+    @Override
+    public void flush() throws IOException {
+        for (Writer s : sinks)
+            s.flush();
+    }
+
+    @Override
+    public void close() throws IOException {
+        for (Writer s : sinks)
+            s.flush();
+    }
+}
+
+class Sorter<T, U, V> {
+    /**
+     * Stably sorts array sortee along with other arrays.
+     *
+     * @param c         comparator to sort with
+     * @param start     inclusive start index
+     * @param end       non-inclusive end index
+     * @param sortee    array to sort
+     * @param trailing1 array to sort along with sortee (sorted/compared using sortee but changes to sortee are applied here too)
+     * @param trailing2 array to sort along with sortee (sorted/compared using sortee but changes to sortee are applied here too)
+     */
+    void insertionSort(Comparator<T> c, int start, int end, List<T> sortee, List<U> trailing1, List<V> trailing2) {
+        for (int i = start + 1; i < end; i++) {
+            T tmp = sortee.get(i);
+            U tmp1 = trailing1.get(i);
+            V tmp2 = trailing2.get(i);
+            int j = i;
+            while (j > start && c.compare(sortee.get(j - 1), tmp) > 0) {
+                sortee.set(j, sortee.get(j - 1));
+                trailing1.set(j, trailing1.get(j - 1));
+                trailing2.set(j, trailing2.get(j - 1));
+                j--;
+            }
+            sortee.set(j, tmp);
+            trailing1.set(j, tmp1);
+            trailing2.set(j, tmp2);
+        }
     }
 }

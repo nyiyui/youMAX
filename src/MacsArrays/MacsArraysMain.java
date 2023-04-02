@@ -9,11 +9,13 @@
  *  - Alex: sorting numerical and alphabetical 
  * for now everyone does everything and then we pick the best parts, then say things!
  */
-package MacsSorting;
+package MacsArrays;
 
-public class MacsSortingMain {
+import MacsBook.MacsBook;
+
+public class MacsArraysMain {
     public static void main(String[] args) {
-        MacsSorting book = new MacsSorting();
-        book.menu();
+        MacsArrays main = new MacsArrays();
+        main.menu();
     }
 }
