@@ -31,3 +31,5 @@ bin/
 src/Pokemon_Rating/Pokemon_Rating.iml
 *.zip
 youmax.iml
+
+.class
