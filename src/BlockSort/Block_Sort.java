@@ -7,8 +7,8 @@ import java.util.HashSet;
 public class Block_Sort {
 
     public static void main(String[] args) {
-        int a[] = { 5, 4, 1, 7, 10, 20, 4, 100, 54, 12, 3, 18, 45, 23, 1, 4, 13, 8, 7, 19, 99, 2, 67, 34, 69, 11, 5, 73,
-                23, 10, 35, 17 };
+        int a[] = {5, 4, 1, 7, 10, 20, 4, 100, 54, 12, 3, 18, 45, 23, 1, 4, 13, 8, 7, 19, 99, 2, 67, 34, 69, 11, 5, 73,
+                23, 10, 35, 17};
         blockSort(a);
         System.out.println(Arrays.toString(a));
     }
@@ -61,7 +61,7 @@ public class Block_Sort {
                         swap(a, j, r - lastBufferSize + ctr);
                         ctr++;
                     }
-                    int min = l, idx = 0;
+                    int min = l;
                     for (int j = 0; j < blockSize; j++) {
                         // merge Block with min(A) (using U as a buffer)
                         for (int k = 1; k < blockSize; k++) {
@@ -86,6 +86,14 @@ public class Block_Sort {
         }
     }
 
+    /**
+     * merges to adjacent blocks, [left, middle) and [middle, right), together
+     *
+     * @param a the array to have its blocks merged
+     * @param l left index
+     * @param m middle index
+     * @param r right index
+     */
     static void merge(int a[], int l, int m, int r) {
         int buffer[] = new int[r - l], idx = 0, s = l, t = m;
         while (s < m && t < r) {
@@ -109,16 +117,25 @@ public class Block_Sort {
                 idx++;
             }
         }
-        for(int i=0;i<buffer.length;i++) {
-            a[l+i] = buffer[i];
+        for (int i = 0; i < buffer.length; i++) {
+            a[l + i] = buffer[i];
         }
     }
 
+    /**
+     * binary seraches for a key within a continuous subarray of an array
+     *
+     * @param a     the array to be searched
+     * @param left  left index of the subarray
+     * @param right right index of the subarray
+     * @param key   the key we want to find
+     * @return the index where the key is or where to insert it
+     */
     static int binarySearch(int a[], int left, int right, int key) {
         int l = left, r = right;
         while (l <= r) {
             int m = (l + r) / 2;
-            if (a[m] <= key) {
+            if (a[m] >= key) {
                 r = m - 1;
             } else {
                 l = m + 1;
@@ -127,6 +144,14 @@ public class Block_Sort {
         return l;
     }
 
+    /**
+     * swaps two equal length subarrays within an array
+     *
+     * @param a   array to be block swapped
+     * @param x1  starting index of the first subarray
+     * @param x2  starting index of the last subarray
+     * @param len length of the subarrays to be swapped
+     */
     static void blockSwap(int a[], int x1, int x2, int len) {
         for (int i = 0; i < len; i++) {
             swap(a, x1 + i, x2 + i);
@@ -189,6 +214,13 @@ public class Block_Sort {
         }
     }
 
+    /**
+     * swaps to elements in an array
+     *
+     * @param a array to have its elements swapped
+     * @param i index of first element to be swapped
+     * @param j index of second element to be swapped
+     */
     static void swap(int a[], int i, int j) {
         int e = a[i];
         a[i] = a[j];
