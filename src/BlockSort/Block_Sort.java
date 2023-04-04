@@ -69,7 +69,7 @@ public class Block_Sort {
                                     Math.min(m + k * blockSize, a.length - 1), blockSize);
                             if (a[min] <= a[m + k * (blockSize - 1) - 1]) {
                                 int pos = binarySearch(a, m + k * blockSize, m + k * (blockSize + 1), a[min]);
-                                rotate(a, pos, m + k * (blockSize + 1), m + k * (blockSize + 1) - pos - 1);
+                                rotate(a, pos, m + k * (blockSize + 1), m + k * (blockSize + 1) - pos - 1 );
                                 min++;
                             }
                         }
