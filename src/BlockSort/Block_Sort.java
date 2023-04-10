@@ -1,5 +1,6 @@
 package BlockSort;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,6 +11,7 @@ public class Block_Sort {
         int a[] = {5, 4, 1, 7, 10, 20, 4, 100, 54, 12, 3, 18, 45, 23, 1, 4, 13, 8, 7, 19, 99, 2, 67, 34, 69, 11, 5, 73,
                 23, 10, 35, 17};
         blockSort(a);
+        System.out.print("final: ");
         System.out.println(Arrays.toString(a));
     }
 
@@ -17,13 +19,13 @@ public class Block_Sort {
         int floorPowerOfTwo = 1 << (Integer.toBinaryString(a.length).length() - 1);
         // insertion sort blocks of size 2, 4, 8, 16
         for (int width = 2; width <= 16; width *= 2) {
-            for (int i = 0; i < a.length - width; i += width) {
+            for (int i = 0; i <= a.length - width; i += width) {
                 insertionSort(a, i, i + width);
             }
         }
         // merge sort of blocks of 16 - ...
         for (int width = 16; width <= floorPowerOfTwo; width *= 2) {
-            for (int i = 0; i < a.length; i += 2 * width) {
+            for (int i = 0; i < a.length - 2 * width; i += 2 * width) {
                 // X is a[l, m) and Y is a[m, r)
                 int l = i, m = Math.min(i + width, a.length - 1), r = Math.min(i + 2 * width, a.length);
                 if (a[r - 1] < a[l]) {
@@ -40,50 +42,92 @@ public class Block_Sort {
                     for (int j = l; j < r; j++) {
                         if (set.add(a[j])) {
                             rotate(a, last, j + 1, 1);
-                            last = j + 1;
+                            last++;
                             firstBufferSize++;
                         }
                         if (firstBufferSize == blockSize) {
                             break;
                         }
+
                     }
                     // filling the last buffer
                     int lastBufferSize = 0;
-                    for (int j = r - 1; j > m; j--) {
+                    for (int j = r-1; j >= m; j--) {
                         if (set.add(a[j])) {
-                            rotate(a, j, r - lastBufferSize, r - lastBufferSize - j - 1);
+                            rotate(a, j, r - lastBufferSize, r - lastBufferSize - j);
                             lastBufferSize++;
                         }
                     }
                     // tagging each block
-                    int ctr = 0; // counter for num of blocks that we've iterated thru
-                    for (int j = firstBufferSize; j < m - l; j += blockSize) {
-                        swap(a, j, r - lastBufferSize + ctr);
+                    for (int ctr=0, j = blockSize+1; j < m; j += blockSize) {
+                        swap(a, j, l + ctr);
                         ctr++;
                     }
-                    int min = l;
-                    for (int j = 0; j < blockSize; j++) {
-                        // merge Block with min(A) (using U as a buffer)
-                        for (int k = 1; k < blockSize; k++) {
-                            blockSwap(a, Math.min(l + k * blockSize, a.length - 1),
-                                    Math.min(m + k * blockSize, a.length - 1), blockSize);
-                            if (a[min] <= a[m + k * (blockSize - 1) - 1]) {
-                                int pos = binarySearch(a, m + k * blockSize, m + k * (blockSize + 1), a[min]);
-                                rotate(a, pos, m + k * (blockSize + 1), m + k * (blockSize + 1) - pos - 1 );
-                                min++;
+                    int minX = l + blockSize, idxX = 0;
+                    int prevYL = m, prevYR = m;
+                    int prevXL = l, prevXR = l;
+                    int curYL = m, curYR = m + blockSize;
+                    int curXL = l + blockSize, curXR = l + blockSize * 2;
+                    while(true) {
+                        if((prevYR - prevYL > 0 && a[prevYR-1] >= a[minX]) || curYR - curYL == 0){
+                            int pos = binarySearch(a, prevYL, prevYR, minX);
+                            int remain = prevYR - minX;
+                            // swap minimum X block to beginning of rolling X blocks
+                            blockSwap(a, curXL, minX, blockSize);
+                            // restore second value for the A block
+                            swap(a, curXL+1, l + idxX);
+                            idxX++;
+                            // rotate X block into previous Y block
+                            // rotate(a, xStart - pos, pos, );
+
+                            merge(a, prevXL, prevXR, pos);
+
+
+                            prevXL = curXL - remain;
+                            prevXR = prevXL + blockSize;
+                            prevYL = prevXR;
+                            prevYR = prevXR + remain;
+                            
+                            curXL += blockSize;
+                            if(m-blockSize <= 0)
+                                break;
+                            minX = curXL;
+                            for(int f=minX + blockSize; f<curXR;f+=blockSize){
+                                if ( a[f+1] < a[minX+1]){
+                                    minX = f;
+                                }
                             }
-                        }
-                        // merge current block with previous block
-                        if (j > 0) {
-                            merge(a, l + j * (blockSize - 1), l + j * (blockSize), l + j * (blockSize + 1));
+                        } else if (curYR - curYL < blockSize) {
+                            rotate(a, curXL, curYR, curYL - curXL);
+
+                            prevYL = curXL;
+                            prevYR = curXL + (curYR - curYL);
+                            curXL += (curYR - curYL);
+                            curXR += (curYR - curYL);
+                            minX += (curYR - curYL);
+                            curYR = curYL;
+                        } else{
+                            blockSwap(a, curXL, curYL, blockSize);
+                            prevYL = curXL;
+                            prevYR = curXL + blockSize;
+                            if(minX == curXL){
+                                minX = curXR;
+                            }
+
+                            curXL += blockSize;
+                            curXR += blockSize;
+                            curYL += blockSize;
+                            curYR = Math.min(curYR + blockSize, r);
                         }
                     }
-                    insertionSort(a, r - lastBufferSize, r);
-                    insertionSort(a, l, m);
-                    merge(a, l, m, r);
+                    insertionSort(a, r-lastBufferSize, r);
+                    merge(a, prevXL, prevXR, r);
+                    // merge(a, l, m, r);
                 }
+                merge(a, l, m, r);
             }
         }
+        merge(a, 0, a.length/2, a.length);
     }
 
     /**
