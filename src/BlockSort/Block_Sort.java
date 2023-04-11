@@ -27,7 +27,7 @@ public class Block_Sort {
         for (int width = 16; width <= floorPowerOfTwo; width *= 2) {
             for (int i = 0; i < a.length - 2 * width; i += 2 * width) {
                 // X is a[l, m) and Y is a[m, r)
-                int l = i, m = Math.min(i + width, a.length - 1), r = Math.min(i + 2 * width, a.length);
+                int l = i, m = i + width, r = i + 2 * width;
                 if (a[r - 1] < a[l]) {
                     // rotate
                     rotate(a, l, r, width);
@@ -36,7 +36,7 @@ public class Block_Sort {
                 } else {
                     // the real block sorting
                     int blockSize = (int) Math.sqrt(width);
-                    HashSet<Integer> set = new HashSet<Integer>(); // for unique values
+                    HashSet<Integer> set = new HashSet<>(); // for unique values
                     // filling the first buffer using rotation
                     int last = l, firstBufferSize = 0;
                     for (int j = l; j < r; j++) {
@@ -71,7 +71,7 @@ public class Block_Sort {
                     int curXL = l + blockSize, curXR = l + blockSize * 2;
                     while(true) {
                         if((prevYR - prevYL > 0 && a[prevYR-1] >= a[minX]) || curYR - curYL == 0){
-                            int pos = binarySearch(a, prevYL, prevYR, minX);
+                            int pos = binarySearch(a, prevYL, prevYR, a[minX]);
                             int remain = prevYR - minX;
                             // swap minimum X block to beginning of rolling X blocks
                             blockSwap(a, curXL, minX, blockSize);
@@ -116,7 +116,7 @@ public class Block_Sort {
                             curXL += blockSize;
                             curXR += blockSize;
                             curYL += blockSize;
-                            curYR = Math.min(curYR + blockSize, r);
+                            curYR = Math.min(curYR + blockSize, r - lastBufferSize);
                         }
                     }
                     insertionSort(a, r-lastBufferSize, r);
