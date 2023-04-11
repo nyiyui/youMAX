@@ -23,7 +23,7 @@ public class Block_Sort {
                 insertionSort(a, i, i + width);
             }
         }
-        // merge sort of blocks of 16 - ...
+        // bottom-up merge sort of blocks of 16 - floorPowerOfTwo
         for (int width = 16; width <= floorPowerOfTwo; width *= 2) {
             for (int i = 0; i < a.length - 2 * width; i += 2 * width) {
                 // X is a[l, m) and Y is a[m, r)
@@ -63,6 +63,7 @@ public class Block_Sort {
                         swap(a, j, l + ctr);
                         ctr++;
                     }
+                    // roll and drop
                     int minX = l + blockSize, idxX = 0;
                     int prevYL = m, prevYR = m;
                     int prevXL = l, prevXR = l;
@@ -77,8 +78,6 @@ public class Block_Sort {
                             // restore second value for the A block
                             swap(a, curXL+1, l + idxX);
                             idxX++;
-                            // rotate X block into previous Y block
-                            // rotate(a, xStart - pos, pos, );
 
                             merge(a, prevXL, prevXR, pos);
 
