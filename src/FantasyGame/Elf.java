@@ -1,4 +1,4 @@
-
+package FantasyGame;
 
 /**
  * This class represents the sole character of the game.

@@ -1,4 +1,4 @@
-
+package FantasyGame;
 
 /**
  * This class is responsible for constructing levels and coordinating interaction of
