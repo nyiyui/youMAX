@@ -1,4 +1,4 @@
-package Enemy;
+package FantasyGame;
 
 public interface Enemy {
   /**
