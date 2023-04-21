@@ -4,8 +4,8 @@
  * Date: Feb 21, 2023
  * Purpose:
  * Improved Storyline: youElf is on a journey to defeat YouEvil.
- * YouElf fights younemies (interface mb?) along the way, such as youDragons and younicorns.
- * YouElf travels through the youForest (new location) that is filled with younimals that help YouElf by giving her youGrass.
+ * YouElf fights younemies (interface mb?) along the way, such as Dragons and younicorns.
+ * YouElf travels through the Forest (new location) that is filled with younimals that help YouElf by giving her youGrass.
  * By you-sing youGrass, YouElf has more chances to use her special move, the you-shouldtouchgrass.
  * You-shouldtouchgrass allows YouElf to gain more attack and hp to defeat the younemies.
  * Other actions:
