@@ -12,17 +12,20 @@ public class Game {
 	 * Initiates the start of game play.
 	 */
 	void play() {
-		Castle castle = new Castle();
-		createLevel1(castle);
-		
+    Engine.current().addSystem(Telop.current());
 		Elf elf = new Elf("Sam");
-		
-		for (int i=0; i<castle.getRoomCount(); i++)
-		{
-			DarkRoom room = castle.getRoom(i);
-			castle.enterRoom(elf, room);
-			castle.exitRoom(elf, room);
-		}
+    elf.setupEngine(Engine.current());
+	Engine.current().loop();
+    return;
+//		Castle castle = new Castle();
+//		createLevel1(castle);
+//
+//		for (int i=0; i<castle.getRoomCount(); i++)
+//		{
+//			DarkRoom room = castle.getRoom(i);
+//			castle.enterRoom(elf, room);
+//			castle.exitRoom(elf, room);
+//		}
 	}
 
 	/**
