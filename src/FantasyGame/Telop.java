@@ -78,6 +78,7 @@ class Telop implements Service {
      */
     String preprocessMessage(int msgRowLen) {
         String res = "";
+        int offset = 0;
         for (int i = 0; i < message.length(); i++) {
             int oldI = i;
             i = message.indexOf('\n', i);
@@ -87,7 +88,6 @@ class Telop implements Service {
             if (i - oldI % msgRowLen == 0) res += message.substring(oldI, i);
             res += message.substring(oldI, i) + new String(new char[msgRowLen - (i - oldI) % msgRowLen]).replaceAll(".", " ");
         }
-//        System.out.println(res.replaceAll("\n","|\n"));
         return res;
     }
 
@@ -139,7 +139,7 @@ class Telop implements Service {
         // ellipsis
         if (wrote < message.length()) {
             for (int i = 3; i < 6; i++)
-                framebuf[(topRow + spaces-1) * consoleCols + consoleCols - i] = '.';
+                framebuf[(topRow + 3) * consoleCols + consoleCols - i] = '.';
         }
     }
 
