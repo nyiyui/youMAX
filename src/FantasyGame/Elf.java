@@ -13,4 +13,9 @@ public class Elf extends Character{
     Elf(String name) {
         super(name);
     }
+
+    @Override
+    String getName() {
+        return "Fortuna";
+    }
 }

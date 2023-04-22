@@ -10,6 +10,7 @@
 package FantasyGame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 class Castle extends Location {
     ArrayList<CastleRoom> rooms;
@@ -46,7 +47,7 @@ class Castle extends Location {
      */
     void exitRoom(Character character, CastleRoom room) {
         room.exit(character);
-        String radiationBlurb = room.radioactive ? " It's nice to not be bombarded by alpha, beta and gamma particles!" : "";
+        String radiationBlurb = room.isRadioactive() ? " It's nice to not be bombarded by alpha, beta and gamma particles!" : "";
         System.out.printf("%s> Leaving %s.%s", character.getName(), room.getName(), radiationBlurb);
     }
 
@@ -60,7 +61,7 @@ class Castle extends Location {
     }
 
     /**
-     * Returns a DarkRoom according to index.
+     * Returns a Room according to index.
      *
      * @param index
      * @return

@@ -43,9 +43,10 @@ abstract class Character {
             gold = maxGold;
             taken = available - maxGold;
         }
-
-        System.out.println(getName() + " takes " + taken + " gold. Gold=" + gold + " bars");
-
+        System.out.println(getName() + " takes " + taken + " gold.Gold=" + gold + " bars");
+        System.out.printf("system> %s takes %d gold.", getName(), taken);
+        String fullStat = gold == maxGold ? " I can't take any more gold!" : "";
+        System.out.printf("%s> I now have %d gold!%s", getName(), gold, fullStat);
         return available - taken;
     }
 
@@ -54,8 +55,8 @@ abstract class Character {
      */
     void drinkPotion() {
         health = 100;
-
         System.out.println(getName() + " drinks potion. Health=" + health + "%");
+        healthChanged();
     }
 
     /**
@@ -63,13 +64,16 @@ abstract class Character {
      */
     void exposeToRadiation() {
         health = (int) (health * 0.9);
-
-        System.out.println(getName() + " is exposed to radiation. Health=" + health + "%");
+        System.out.println("system> "+getName() + " is exposed to radiation. Health=" + health + "%");
+        healthChanged();
     }
 
-    String getName() {
-        return "Elf " + name;
+    void healthChanged() {
+        if (health<=30)
+            System.out.printf("%s> I only have a bit of health remaining until I can't return home!",getName());
     }
+
+    abstract String getName();
 
     public int getHealth() {
         return this.health;

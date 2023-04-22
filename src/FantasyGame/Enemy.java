@@ -14,4 +14,10 @@ public interface Enemy {
    * Return name displayed to player.
    */
   String getName();
+
+  /**
+   * Attack character once.
+   * @param target character to attack
+   */
+  void attack(Character target);
 }

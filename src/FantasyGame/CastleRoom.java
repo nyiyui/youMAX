@@ -10,6 +10,7 @@
 package FantasyGame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * DarkRooms have certain properties that Elves can interact with.
@@ -43,10 +44,11 @@ class CastleRoom {
      */
     void enter(Character character) {
         elves.add(character);
-
-        if (radioactive)
+        // randomly expose to raadiation
+        if (isRadioactive() && new Random().nextInt(10) == 0) {
+            System.out.printf("%s> Wah! I got hit by a gamma ray!",character.getName());
             character.exposeToRadiation();
-
+        }
         gold = character.takeGold(gold);
     }
 
@@ -65,7 +67,10 @@ class CastleRoom {
      * @return
      */
     String getName() {
-
         return name;
+    }
+
+    public boolean isRadioactive() {
+        return radioactive;
     }
 }
