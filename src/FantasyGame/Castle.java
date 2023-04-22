@@ -67,6 +67,7 @@ class Castle extends Location {
 
     @Override
     String getBlurb() {
-        return "TODO: ivy help";
+        return "What's this more than just trains and air conditioning got transported to this fantasy world?" +
+                "\nIndeed, a piece of a popular game franchise is also here! Welcome to Bowser's Castle :D";
     }
 }
