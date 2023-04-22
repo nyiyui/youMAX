@@ -12,7 +12,7 @@ class DarkRoom {
 	int gold;
 	boolean radioactive;
 	
-	ArrayList<Character> elves;
+	ArrayList<Elf> elves;
 	
 	/**
 	 * Constructs a DarkRoom
@@ -26,30 +26,30 @@ class DarkRoom {
 		this.gold = gold;
 		this.radioactive = radioactive;
 		
-		elves = new ArrayList<Character>();
+		elves = new ArrayList<Elf>();
 	}
 	
 	/**
 	 * Have Elf interact with DarkRoom.
-	 * @param character
+	 * @param elf
 	 */
-	void enter(Character character)
+	void enter(Elf elf)
 	{
-		elves.add(character);
+		elves.add(elf);
 		
 		if (radioactive)
-			character.exposeToRadiation();
+			elf.exposeToRadiation();
 		
-		gold = character.takeGold(gold);
+		gold = elf.takeGold(gold);
 	}
 	
 	/**
 	 * Remove Elf from room.
-	 * @param character
+	 * @param elf
 	 */
-	void exit(Character character)
+	void exit(Elf elf)
 	{
-		elves.remove(character);
+		elves.remove(elf);
 	}
 
 	/**
