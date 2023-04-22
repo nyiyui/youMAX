@@ -11,8 +11,8 @@ class Telop implements Service {
     }
 
     private Elf elf;
-    private int consoleRows = 10;
-    private int consoleCols = 50;
+    private int consoleRows = 50;
+    private int consoleCols = 10;
     private int prevFrame;
     private ArrayDeque<String> telops;
     private char nextFrame[];
@@ -26,11 +26,11 @@ class Telop implements Service {
         prepareFrame(dtms);
         String oldFrame = curFrame;
         curFrame = "";
-        for (int row = 0; row < consoleRows; row++) {
-            curFrame += new String(nextFrame).substring(row * consoleCols, (row + 1) * consoleCols);
-            curFrame += "|\n";
+        for (int row = 0; row < consoleCols; row++) {
+            curFrame += new String(nextFrame).substring(row * consoleRows, row * consoleRows + consoleCols);
+            curFrame += "\n";
         }
-        if (oldFrame != null && oldFrame.equals(curFrame)) {
+        if (oldFrame != null&& oldFrame.equals(curFrame)){
             dtms = 0;
             return;
         }
@@ -43,7 +43,7 @@ class Telop implements Service {
         for (int i = 0; i < nextFrame.length; i++)
             nextFrame[i] = ' ';
         String date = String.format("dt %dms", dtms);
-        System.arraycopy(date.toCharArray(), 0, nextFrame, consoleCols - date.length(), date.length());
+        System.arraycopy(date.toCharArray(), 0, nextFrame, consoleRows - date.length(), date.length());
     }
 
     public void show(String msg) {
