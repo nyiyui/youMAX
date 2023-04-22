@@ -1,24 +1,24 @@
 package FantasyGame;
 
-import java.util.ArrayList;
-
-public interface Location {
+public abstract class Location {
   /**
    * Elf enters the location.
-   * {@link exit} must be called by the caller the same number of time as this method.
+   * exit must be called by the caller the same number of time as this method.
    */
-  void enter(Elf elf);
-  void exit(Elf elf);
+  void enter(Character character) {
+    System.out.printf("%s> I'm entering %s. According to my guidebook: %s", character.getName(),this.getBlurb());
+  }
+
+  void exit(Character character) {
+    System.out.printf("%s> I'm exiting %s. Bye-nya!",character.getName());
+  }
+
   /**
    * Return name shown to user.
    */
-  String getName();
+  abstract String getName();
   /**
    * Return blurb (description) shown to user.
    */
-  String getBlurb();
-  /**
-   * Return available directions in this loaction.
-   */
-  ArrayList<Direction> getDirections();
+  abstract  String getBlurb();
 }

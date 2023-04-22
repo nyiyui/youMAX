@@ -16,20 +16,16 @@ public class Game {
 	 */
 	void play() {
 		gameIntro();
-    Engine.current().addSystem(Telop.current());
-		Elf elf = new Elf("Sam");
-    elf.setupEngine(Engine.current());
-	Engine.current().loop();
-    return;
-//		Castle castle = new Castle();
-//		createLevel1(castle);
-//
-//		for (int i=0; i<castle.getRoomCount(); i++)
-//		{
-//			DarkRoom room = castle.getRoom(i);
-//			castle.enterRoom(elf, room);
-//			castle.exitRoom(elf, room);
-//		}
+		Character character = new Elf("YouMAX");
+		Castle castle = new Castle();
+		createLevel1(castle);
+
+		for (int i=0; i<castle.getRoomCount(); i++)
+		{
+			CastleRoom room = castle.getRoom(i);
+			castle.enterRoom(elf, room);
+			castle.exitRoom(elf, room);
+		}
 	}
 
 	void gameIntro(){
@@ -47,13 +43,13 @@ public class Game {
 	 */
 	void createLevel1(Castle castle)
 	{
-		DarkRoom room = new DarkRoom("foyer", 50, true);
+		CastleRoom room = new CastleRoom("foyer", 50, true);
 		castle.addRoom(room);
 		
-		room = new DarkRoom("kitchen", 100, false);
+		room = new CastleRoom("kitchen", 100, false);
 		castle.addRoom(room);
 		
-		room = new DarkRoom("living room", 0, true);
+		room = new CastleRoom("living room", 0, true);
 		castle.addRoom(room);
 	}
 }
