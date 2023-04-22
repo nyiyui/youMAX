@@ -17,4 +17,11 @@ class Forest extends Location {
     public String getBlurb() {
         return "The Forest of Magic is the focal point of all things hostile and evil, located somewhat-near the Human Village (since the position changes constantly, it is not possible to accurately measure the distance.)";
     }
+
+    @Override
+    void enter(Character character) {
+        super.enter(character);
+        System.out.printf("%s> what are these pesky humans!\n",getName());
+        character.hallucinate();
+    }
 }

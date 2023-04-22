@@ -9,6 +9,9 @@
  */
 package FantasyGame;
 
+import javafx.css.CssMetaData;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,23 +20,27 @@ import java.util.Random;
  * Elves with Darkrooms.
  */
 public class Game {
+    private ArrayList<Location> locations;
+    private Character characters[];
 
     /**
      * Initiates the start of game play.
      */
     void play() {
         gameIntro();
-        Character characters[] = {
-                new Elf("YouMAX"),
-                new Souta()
-        };
-        Castle castle = new Castle();
-        createLevel1(castle);
+        characters = new Character[]{new Elf("YouMAX"), new Souta()};
+        createLevel1();
+        createLevel2();
+        doLevel1();
+        doLevel2();
+    }
 
-        for (int i = 0; i < castle.getRoomCount(); i++) {
-            CastleRoom room = castle.getRoom(i);
+    private void doLevel1() {
+        Castle c = (Castle) locations.get(0);
+        for (int i = 0; i < c.getRoomCount(); i++) {
+            CastleRoom room = c.getRoom(i);
             Character character = characters[new Random().nextInt(characters.length)];
-            castle.enterRoom(character, room);
+            c.enterRoom(character, room);
             switch (new Random().nextInt(10)) {
                 case 0:
                     character.hallucinate();
@@ -43,8 +50,20 @@ public class Game {
                     character.drinkPotion();
                     break;
             }
-            castle.exitRoom(character, room);
+            c.exitRoom(character, room);
         }
+    }
+
+    private void createLevel2() {
+        Forest forest = new Forest();
+        locations.add(forest);
+    }
+
+    private void doLevel2() {
+        Character character = characters[new Random().nextInt(characters.length)];
+        Forest f = (Forest) locations.get(1);
+        f.enter(character);
+        f.exit(character);
     }
 
     void gameIntro() {
@@ -54,15 +73,15 @@ public class Game {
         System.out.println("In addition, Fortuna is travelling through a very high-tech forest which is installed with an AQS (Air Quality Service).");
         System.out.println("Within this forest, the Fortuna can fight dragons and you-unicorns.");
         System.out.println("Fortuna may or may not be powerful to defeat these enemies, so we shall have to see how the story unfolds. IKZ!!!");
-        System.out.println(new String(new char[77]).replaceAll(".","-"));
+        System.out.println(new String(new char[77]).replaceAll(".", "-"));
     }
 
     /**
-     * Constructs one level of the game for a character.
-     *
-     * @param castle
+     * Constructs one level of the game for a character and adds it to locations.
      */
-    void createLevel1(Castle castle) {
+    void createLevel1() {
+        Castle castle = new Castle();
+        locations.add(castle);
         CastleRoom room = new CastleRoom("foyer", 3, true);
         castle.addRoom(room);
 
@@ -72,7 +91,7 @@ public class Game {
         room = new CastleRoom("living room", 5, true);
         castle.addRoom(room);
 
-        room = new CastleRoom("basement",7,true);
+        room = new CastleRoom("basement", 7, true);
         castle.addRoom(room);
     }
 }
