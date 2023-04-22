@@ -1,8 +1,8 @@
 package FantasyGame;
 
 public class Souta extends Character{
-    Souta(String name) {
-        super(name);
+    Souta() {
+        super("Souta");
     }
 
     @Override

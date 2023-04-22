@@ -9,6 +9,9 @@
  */
 package FantasyGame;
 
+import java.awt.*;
+import java.util.Random;
+
 /**
  * This class represents the a character of the game.
  */
@@ -43,10 +46,9 @@ abstract class Character {
             gold = maxGold;
             taken = available - maxGold;
         }
-        System.out.println(getName() + " takes " + taken + " gold.Gold=" + gold + " bars");
-        System.out.printf("system> %s takes %d gold.", getName(), taken);
+        System.out.printf("system> %s takes %d gold.\n", getName(), taken);
         String fullStat = gold == maxGold ? " I can't take any more gold!" : "";
-        System.out.printf("%s> I now have %d gold!%s", getName(), gold, fullStat);
+        System.out.printf("%s> I now have %d gold!%s\n", getName(), gold, fullStat);
         return available - taken;
     }
 
@@ -55,8 +57,18 @@ abstract class Character {
      */
     void drinkPotion() {
         health = 100;
-        System.out.println(getName() + " drinks potion. Health=" + health + "%");
+        String word = new Random().nextBoolean()?"again":"now";
+        System.out.printf("%s> Lemme drink some potion...Glug glug glug...Ahhh. I have full health %s!",getName(),word);
         healthChanged();
+    }
+
+    /**
+     * Hallucinate good health and gold.
+     */
+    void hallucinate() {
+        System.out.printf("%s> Wow! Wait, I have 100%% health and %d gold! I'm so good! I also seem to have finished all my UMLs!\n",getName(),maxGold);
+        health *= 0.5;
+        System.out.printf("system> What %s did not realise, though, is that their health is now %d.\n", getName(),health);
     }
 
     /**

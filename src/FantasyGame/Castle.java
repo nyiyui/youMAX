@@ -36,7 +36,7 @@ class Castle extends Location {
      */
     void enterRoom(Character character, CastleRoom room) {
         room.enter(character);
-        System.out.printf("%s> Entering %s!", character.getName());
+        System.out.printf("%s> Entering %s!\n", character.getName(),room.getName());
     }
 
     /**
@@ -48,7 +48,7 @@ class Castle extends Location {
     void exitRoom(Character character, CastleRoom room) {
         room.exit(character);
         String radiationBlurb = room.isRadioactive() ? " It's nice to not be bombarded by alpha, beta and gamma particles!" : "";
-        System.out.printf("%s> Leaving %s.%s", character.getName(), room.getName(), radiationBlurb);
+        System.out.printf("%s> Leaving %s.%s\n", character.getName(), room.getName(), radiationBlurb);
     }
 
     /**

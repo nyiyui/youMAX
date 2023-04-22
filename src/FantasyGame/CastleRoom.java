@@ -46,7 +46,7 @@ class CastleRoom {
         elves.add(character);
         // randomly expose to raadiation
         if (isRadioactive() && new Random().nextInt(10) == 0) {
-            System.out.printf("%s> Wah! I got hit by a gamma ray!",character.getName());
+            System.out.printf("%s> Wah! I got hit by a gamma ray!\n",character.getName());
             character.exposeToRadiation();
         }
         gold = character.takeGold(gold);
