@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * DarkRooms have certain properties that Elves can interact with.
+ * CastleRooms have certain properties that Elves can interact with.
  */
 class CastleRoom {
     private String name;
@@ -23,7 +23,7 @@ class CastleRoom {
     ArrayList<Character> elves;
 
     /**
-     * Constructs a DarkRoom
+     * Constructs a CastleRoom
      *
      * @param name        The name of the room.
      * @param gold        The amount of the gold.
@@ -38,7 +38,7 @@ class CastleRoom {
     }
 
     /**
-     * Have Elf interact with DarkRoom.
+     * Have Elf interact with CastleRoom.
      *
      * @param character
      */
@@ -62,7 +62,7 @@ class CastleRoom {
     }
 
     /**
-     * A description of this DarkRoom
+     * A description of this CastleRoom
      *
      * @return
      */
