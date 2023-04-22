@@ -9,7 +9,7 @@
  */
 package FantasyGame;
 
-public interface Enemy {
+public interface Younemy {
   /**
    * Return name displayed to player.
    */

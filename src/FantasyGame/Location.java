@@ -14,11 +14,11 @@ public abstract class Location {
    * exit must be called by the caller the same number of time as this method.
    */
   void enter(Character character) {
-    System.out.printf("%s> I'm entering %s. According to a conveniently placed sign: %s", character.getName(),this.getBlurb());
+    System.out.printf("%s> I'm entering %s. According to a conveniently placed sign: %s", character.getName(),this.getName(),this.getBlurb());
   }
 
   void exit(Character character) {
-    System.out.printf("%s> I'm exiting %s. Bye-nya!",character.getName());
+    System.out.printf("%s> I'm exiting %s. Bye-nya!",character.getName(),this.getName());
   }
 
   /**

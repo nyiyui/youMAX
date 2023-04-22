@@ -9,10 +9,7 @@
  */
 package FantasyGame;
 
-import javafx.css.CssMetaData;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -23,12 +20,16 @@ public class Game {
     private ArrayList<Location> locations;
     private Character characters[];
 
+    Game() {
+        this.locations=new ArrayList<>();
+    }
+
     /**
      * Initiates the start of game play.
      */
     void play() {
         gameIntro();
-        characters = new Character[]{new Elf("YouMAX"), new Souta()};
+        characters = new Character[]{new Elf("YouMAX"), new YouMAX()};
         createLevel1();
         createLevel2();
         doLevel1();
@@ -49,6 +50,10 @@ public class Game {
                 case 2:
                     character.drinkPotion();
                     break;
+                case 3:
+                    Youragon e = new Youragon();
+                    System.out.printf("system> Suddenly, a wild %s appeared out of nowhere!\n",e);
+                    e.attack(character);
             }
             c.exitRoom(character, room);
         }
@@ -71,7 +76,7 @@ public class Game {
         System.out.println("Once upon a time, in your typical fantasy world, an Elf, Fortuna, from the future suddenly appears?!");
         System.out.println("With them, they brought new high-end technology such as the EMS (Elf Movement Service)!");
         System.out.println("In addition, Fortuna is travelling through a very high-tech forest which is installed with an AQS (Air Quality Service).");
-        System.out.println("Within this forest, the Fortuna can fight dragons and you-unicorns.");
+        System.out.println("Within this forest, Fortuna can fight dragons and you-unicorns.");
         System.out.println("Fortuna may or may not be powerful to defeat these enemies, so we shall have to see how the story unfolds. IKZ!!!");
         System.out.println(new String(new char[77]).replaceAll(".", "-"));
     }
