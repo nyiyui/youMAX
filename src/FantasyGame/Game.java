@@ -1,3 +1,6 @@
+/**
+ * top comments lmao
+ */
 package FantasyGame;
 
 /**
@@ -12,6 +15,7 @@ public class Game {
 	 * Initiates the start of game play.
 	 */
 	void play() {
+		gameIntro();
     Engine.current().addSystem(Telop.current());
 		Elf elf = new Elf("Sam");
     elf.setupEngine(Engine.current());
@@ -26,6 +30,14 @@ public class Game {
 //			castle.enterRoom(elf, room);
 //			castle.exitRoom(elf, room);
 //		}
+	}
+
+	void gameIntro(){
+		System.out.println("The story so far (aka the improved storyline): ");
+		System.out.println("Once upon a time, in your typical fantasy world, an Elf from the future suddenly appears?!");
+		System.out.println("With them, they brought new high-end technology such as the EMS (Elf Movement Service)!");
+		System.out.println("In addition, the ELf is travelling through a very high-tech forest which is installed with an AQS (Air Quality Service).");
+		System.out.println("Within this forest, the Elf can..."); // me add more later
 	}
 
 	/**
