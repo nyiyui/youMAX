@@ -7,25 +7,29 @@ import java.util.Scanner;
 /**
  * This class represents the sole character of the game.
  */
-class Elf {
+class Character {
     String name;
     /**
      * Health as a percentage (0 to 100 inclusive)
      */
     int health;
     int gold;
-    Location here;
-    final static int maxGold = 8;
+    private Location here;
+    int maxGold = 8;
     ArrayList<Direction> directions;
 
-    Elf(String name) {
+    Character(String name) {
         this.name = name;
         health = 100;
         gold = 0;
     }
 
+    public int getMaxGold() {
+        return maxGold;
+    }
+
     void setupEngine(Engine e) {
-        e.addSystem(new ElfMovementService(this));
+        e.addSystem(new ElfService(this));
     }
 
     /**
@@ -83,19 +87,58 @@ class Elf {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public Location getHere() {
+        return here;
+    }
+
+    public void moveTo(Location l) {
+        Telop.current().stopShowing();
+        if (here != null) {
+            here.exit(this);
+            Telop.current().show('@', String.format("Leaving %s, entering %s!", here.getName(), l.getName()));
+        } else {
+            Telop.current().show('@', String.format("Entering %s!",  l.getName()));
+        }
+        here = l;
+        l.enter(this);
+    }
+
+    /**
+     * (Internal method) Get telop message for current location.
+     *
+     * @return telop message
+     */
+    String getMessage() {
+        if (here.getMessage()!=null)return here.getMessage();
+        String res = "\nPress the first letter and enter to move there:\n";
+        ArrayList<Direction> ds = here.getDirections();
+        for (int i = 0; i < ds.size(); i++) {
+            res += String.format("%d. %s\n", i + 1, ds.get(i).name);
+        }
+        return here.getBlurb() + res;
+    }
 }
 
 /**
  * Implements player movement.
  */
-class ElfMovementService implements Service {
-    private Elf elf;
+class ElfService implements Service {
+    private Character character;
 
-    ElfMovementService(Elf elf) {
-        this.elf = elf;
+    ElfService(Character character) {
+        this.character = character;
+    }
+
+    private void checkHealth() {
+        if (character.health<=0) {
+            Telop.current().show('x',"Our brave main character, YouMAX, has reached 0 HP. YouMAX must re-run the program to youvive herself!");
+            Engine.current().stop();
+        }
     }
 
     public void update(int dtms) {
+        checkHealth();
         Scanner s = new Scanner(System.in);
         // available() docs say "estimate" but I mean...
         try {
@@ -104,11 +147,24 @@ class ElfMovementService implements Service {
             throw new RuntimeException(e);
         }
         String move = s.next().toLowerCase();
+        if (move.length()==0) {
+            Telop.current().stopShowing();
+        }
+        if (move.charAt(0) == '?') {
+            Telop.current().show('*',character.getMessage());
+        }
+        if (move.charAt(0) == 's') {
+            Telop.current().show('@',"The main character died.");
+            Engine.current().stop();
+        }
         boolean moved = true;
-        for (Direction d : elf.here.getDirections()) {
+        for (Direction d : character.getHere().getDirections()) {
             String target = d.name.toLowerCase();
             if (move.length() == 1 && move.charAt(0) == target.charAt(0)) {
-//        elf.move(d);
+                if (d.id == -1) {
+                    character.moveTo(new Forest());
+                }
+                character.getHere().move(d.id);
                 System.out.println("move");
                 moved = true;
                 break;
