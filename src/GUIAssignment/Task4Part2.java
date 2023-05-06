@@ -24,7 +24,7 @@ public class Task4Part2 implements ActionListener {
         frame.setSize(500, 700);
         changeColor.addActionListener(this);
         frame.add(changeColor, BorderLayout.NORTH);
-        frame.add(card, BorderLayout.CENTER);
+        frame.add(card);
         frame.setVisible(true);
     }
 
