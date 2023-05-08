@@ -102,10 +102,10 @@ public class ClickColinear extends JPanel implements MouseMotionListener, MouseL
             Color circleColor;
             switch (state) {
                 case 0:
-                    circleColor=new Color(0x137a7f);
+                    circleColor = new Color(0x137a7f);
                     break;
                 case 2:
-                    circleColor=Color.GRAY;
+                    circleColor = Color.GRAY;
                     break;
                 default:
                     return;
@@ -125,20 +125,18 @@ public class ClickColinear extends JPanel implements MouseMotionListener, MouseL
             // x(m1-m2)=-m2x32+y32+m1x12-y12
             double cx = (-m2 * x32 + y32 + m1 * x12 - y12) / (m1 - m2);
             double cy = m1 * (cx - x12) + y12;
-            double d1 = Math.max(Math.max(Math.abs(x12-cx),Math.abs(x12-x1)),Math.abs(x12-x2));
-            double d2 = Math.max(Math.max(Math.abs(x32-cx),Math.abs(x32-x3)),Math.abs(x32-x2));
-            g.drawLine((int) (x12 - d1), (int) ( y12 - d1 * m1), (int) (x12 + d1), (int) ( y12 + d1 * m1));
-            g.drawLine((int) (x32 - d2), (int) ( y32 - d2 * m2), (int) (x32 + d2), (int) ( y32 + d2* m2));
+            double d1 = Math.max(Math.max(Math.abs(x12 - cx), Math.abs(x12 - x1)), Math.abs(x12 - x2));
+            double d2 = Math.max(Math.max(Math.abs(x32 - cx), Math.abs(x32 - x3)), Math.abs(x32 - x2));
+            g.drawLine((int) (x12 - d1), (int) (y12 - d1 * m1), (int) (x12 + d1), (int) (y12 + d1 * m1));
+            g.drawLine((int) (x32 - d2), (int) (y32 - d2 * m2), (int) (x32 + d2), (int) (y32 + d2 * m2));
             g.drawString("centre", (int) cx, (int) cy);
             g.setColor(circleColor);
             double r = Math.sqrt(Math.abs(cx - x1) * Math.abs(cx - x1) + Math.abs(cy - y1) * Math.abs(cy - y1));
             g.drawOval((int) (cx - r), (int) (cy - r), (int) r * 2, (int) r * 2);
             // Although slightly different, two slopes may be similar enough that calculations result in NaN values.
             // Assume these NaN values only come from sufficiently-similar m1 and m2 values.
-            if (m1 == m2 || Double.isNaN(r)) {
+            if (m1 == m2 || Double.isNaN(r))
                 g.drawString("You selected three colinear points!", getWidth() / 2, getHeight() / 2);
-                System.out.println("colinear");
-            }
         }
     }
 }

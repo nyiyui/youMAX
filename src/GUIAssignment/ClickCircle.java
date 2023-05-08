@@ -15,7 +15,7 @@ public class ClickCircle extends JPanel
     public static void main(String[] args) {
         JFrame frame = new JFrame("Exercise 9.5-2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JComponent newContentPane = new ClickRect();
+        JComponent newContentPane = new ClickCircle();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
